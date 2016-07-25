@@ -2,12 +2,14 @@
 
 MONDAY 7/25
 -Create database and basic database manager. 
--Set up file structure(html,js, css). 
--Create server. 
--Research angular forms-- set up basic form structure in html. 
+x Set up file structure(html,js, css). 
+x Create server. 
+x Research angular forms-- set up basic form structure in html. 
+x Set up secure login with gmail. 
 
 TUESDAY 7/26
--Set up secure login with gmail. 
+-User can log out
+-User can add a student. 
 -Create registration form where user completes basic information that can be reused in forms. 
 -User can save and update information.
 -Create two separate forms (as a start). User should be able to select the form they would like to complete. 
@@ -28,3 +30,22 @@ THURSDAY 7/28
 FRIDAY 7/29
 -Styling
 -validation and alert messages 
+
+
+MY ROUTES
+
+/guardian
+/student
+/emergency
+/teacher
+/admin
+
+<a href="#" onclick="signOut();">Sign out</a>
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>

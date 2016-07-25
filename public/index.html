@@ -7,6 +7,7 @@
     <meta name="description" content="Web application to make the school enrollment process easier">
     <meta name="keyword" content="school, registration, enrollment">
     <meta name="author" content="Demetria">
+    <meta name="google-signin-client_id" content="589989491878-6l1to95o0si62gq6rrf5fr0fppa4087g.apps.googleusercontent.com">
     <title>SimpleEnroll</title>
 <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -21,8 +22,53 @@
     <link href='https://fonts.googleapis.com/css?family=Kanit:800' rel='stylesheet' type='text/css'>
 </head>
 <body ng-app="myApp" >
-<h1>We're in business!</h1>
+	<h1>SimpleEnroll</h1>
+	<div id="login">
+		<h2>Login With Your Gmail Account</h2>
+		<div class="g-signin2" data-onsuccess="onSignIn"></div>
 
+		<p>No Gmail Account?<a href="https://accounts.google.com/SignUp?service=mail&hl=en_us&continue=http%3A%2F%2Fmail.google.com%2Fmail%2F%3Fpc%3Den-ha-na-us-bk&utm_campaign=en&utm_source=en-ha-na-us-bk&utm_medium=ha">Create one here.</a></p>
+	</div>
+	<div ng-controller="registerCtrl" id="register">
+	  <form novalidate>
+	    First Name:<br>
+	    <input type="text" ng-model="guardianFirstName"><br>
+	    Last Name:<br>
+	    <input type="text" ng-model="guardianLastName">
+
+	    <div>
+	    	<h2>Basic Contact Information</h2>
+	    	Address:
+		    <input type="text" ng-model="guardianAddress">
+		    City:
+		    <input type="text" ng-model="guardianCity">
+		    State:
+		    <input type="text" ng-model="guardianState">
+		    Zip Code: 
+		    <input type="text" ng-model="guardianZip">
+	    	<br><br>
+		    Cell Phone:
+		    <input type="text" ng-model="guardianCell">
+		    Home Phone:
+		    <input type="text" ng-model="guardianHome">
+		    Email:
+	    	<input type="text" ng-model="guardianEmail">
+	    </div>
+	    <div>
+	    	<h2>Employment Information</h2>
+		    Place of Employment:
+		    <input type="text" ng-model="guardianWorkName">
+		    Work Phone:
+		    <input type="text" ng-model="guardianWorkPhone">
+	    </div>
+	    <br><br>
+	    <button type="submit" ng-click="register()">Register</button>
+	    <button ng-click="reset()">RESET</button>
+	  </form>
+	  <br>
+	</div>
+</div>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="app.js"></script>
 </body>

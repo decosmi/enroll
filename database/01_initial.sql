@@ -16,21 +16,25 @@ CREATE TABLE teacher (
  	last_name		text
 );
 
-ALTER TABLE team OWNER TO school;
+ALTER TABLE teacher OWNER TO school;
 
 CREATE TABLE guardians (
 	id 					serial PRIMARY KEY,
  	first_name			text	NOT NULL,
 	last_name			text	NOT NULL,	
+	home_address		text,
+	home_city			text,
+	home_state			text,
+	home_zip			integer,
 	email				text,
 	cell_phone			integer,
 	home_phone			integer, 
 	work_phone			integer,	
 	work_name			text,
-	work_address		text
+	work_email			text
 );
 
-ALTER TABLE team OWNER TO school;
+ALTER TABLE guardians OWNER TO school;
 
 CREATE TABLE students (
 	id     			serial PRIMARY KEY,
@@ -48,7 +52,7 @@ CREATE TABLE students (
 	REFERENCES teacher(id)
 );
 
-ALTER TABLE team OWNER TO school;
+ALTER TABLE students OWNER TO school;
 
 CREATE TABLE student_guardian (
 	id 				serial PRIMARY KEY,
@@ -65,7 +69,7 @@ CREATE TABLE student_guardian (
 	REFERENCES guardians(id)
 );
 
-ALTER TABLE team OWNER TO school;
+ALTER TABLE student_guardian OWNER TO school;
 
 CREATE TABLE emergency (
 	id 					serial PRIMARY KEY,
@@ -79,7 +83,7 @@ CREATE TABLE emergency (
 	work_address		text	
 );
 
-ALTER TABLE team OWNER TO school;
+ALTER TABLE emergency OWNER TO school;
 
 CREATE TABLE student_emergency (
 	id 				serial PRIMARY KEY,
@@ -96,7 +100,7 @@ CREATE TABLE student_emergency (
 	REFERENCES student_emergency(id)
 );
 
-ALTER TABLE team OWNER TO school;
+ALTER TABLE student_emergency OWNER TO school;
 
 
 
@@ -106,4 +110,4 @@ CREATE TABLE school_admin (
  	last_name		text
 );
 
-ALTER TABLE team OWNER TO school;
+ALTER TABLE school_admin OWNER TO school;
