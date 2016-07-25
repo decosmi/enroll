@@ -1,0 +1,30 @@
+﻿
+
+MONDAY 7/25
+-Create database and basic database manager. 
+-Set up file structure(html,js, css). 
+-Create server. 
+-Research angular forms-- set up basic form structure in html. 
+
+TUESDAY 7/26
+-Set up secure login with gmail. 
+-Create registration form where user completes basic information that can be reused in forms. 
+-User can save and update information.
+-Create two separate forms (as a start). User should be able to select the form they would like to complete. 
+
+
+WEDNESDAY 7/27
+-User can choose which child they are completing forms for. 
+-Form will automatically populate fields if the database has the information. 
+-When user logs in, they can pick up where they left off. 
+
+
+WEDNESDAY 7/27
+-User can save and send forms as a PDF. (I have no idea how to do this step).
+
+THURSDAY 7/28
+-flex day
+
+FRIDAY 7/29
+-Styling
+-validation and alert messages 
