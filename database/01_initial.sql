@@ -27,9 +27,9 @@ CREATE TABLE guardians (
 	home_state			text,
 	home_zip			integer,
 	email				text,
-	cell_phone			integer,
-	home_phone			integer, 
-	work_phone			integer,	
+	cell_phone			text,
+	home_phone			text, 
+	work_phone			text,	
 	work_name			text,
 	work_email			text
 );
@@ -39,11 +39,11 @@ ALTER TABLE guardians OWNER TO school;
 CREATE TABLE students (
 	id     			serial PRIMARY KEY,
 	first_name		text	NOT NULL,
-	middle_name		text	NOT NULL,
-	last_name		text 	NOT NULL,
-	birthdate		text	NOT NULL,
-	gender			text	NOT NULL,
-	social_security	integer	NOT NULL,
+	middle_name		text,
+	last_name		text,
+	birthdate		text,
+	gender			text,
+	social_security	text,
 	race_ethnicity	text,
 	teacher			integer,
 
@@ -57,7 +57,8 @@ ALTER TABLE students OWNER TO school;
 CREATE TABLE student_guardian (
 	id 				serial PRIMARY KEY,
  	student_id 		integer,
- 	guardian_id 	integer,	
+ 	guardian_id 	integer,
+ 	rel_to_student	text,	
 	
 
 	CONSTRAINT fk_from_students_to_student_guardian		 

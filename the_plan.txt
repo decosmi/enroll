@@ -8,6 +8,7 @@ x Research angular forms-- set up basic form structure in html.
 x Set up secure login with gmail. 
 
 TUESDAY 7/26
+-can grab user information (email, name and ID token) upon sign in 
 -User can log out
 -User can add a student. 
 -Create registration form where user completes basic information that can be reused in forms. 
