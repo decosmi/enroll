@@ -2,87 +2,86 @@
 
 var app = angular.module('myApp', []);
 
-   // {table: widths:[200,200],body:[['Heading 1','Heading 2'],['Here is some text','And here is some more']]}
-
 app.controller('formCtrl', function($scope,$rootScope, $http, sendData){ 
-  $scope.docDefinition = { 
-    pageOrientation: 'landscape',
-    content: [
-        {text:'CHILD CARE ENROLLMENT',style:'header'},
-        {text:'STATE OF WISCONSIN DEPARTMENT OF CHILDREN AND FAMILIES Division of Early Care and Education DCF-F (CFS-0062) (R. 02/2009)',
-            style:'smaller'},
-        {text:"USE OF FORM: Use of this form is mandatory for Family Child Care Centers to comply with DCF 250.04(6)(a)1. Failure to comply may result in issuance of a noncompliance statement.This form may also be used by Group Child Care Centers and Day Camps to comply with DCF 251.04(6)(a)1. and DCF 252.41(4)(a)1. respectively. Personal information you provide maybe used for secondary purposes Privacy Law, s.15.04(1)(m), Wisconsin Statutes.",
-            style:'smaller'},
-        {text:"INSTRUCTIONS: The parent / guardian shall fill out the form completely, sign it and submit it to the center prior to the child's first day of attendance. Information on this form shall be keptcurrent. When enrolling a child under two years of age, a completed Intake for Child Under 2 Years form must also be on file prior to the child's first day of attendance.",
-            style:'smaller'},
-        {text:'Child Information', style:'subheader'},
-        {
-            table: { 
-                headerRows: 1,
-                widths: [200,300,100,100],
-                body:[
-                    [{text:'Name (Last First Middle)', style: 'tableHeader1'}, {text:'Home Address', style:'tableHeader1'}, {text:'Telephone Number', style:'tableHeader1'},{text:'Birthday (mm/dd/yyyy)', style:'tableHeader1'}],
-                    ['placeholder', 'placeholder', 'placeholder', 'placeholder']
-                ]
-            },
+    $scope.createEnrollForm = function(){
+        return {
+            pageOrientation: 'landscape',
+            content: [
+                {text:'CHILD CARE ENROLLMENT',style:'header'},
+                {text:'STATE OF WISCONSIN DEPARTMENT OF CHILDREN AND FAMILIES Division of Early Care and Education DCF-F (CFS-0062) (R. 02/2009)',
+                    style:'smaller'},
+                {text:"USE OF FORM: Use of this form is mandatory for Family Child Care Centers to comply with DCF 250.04(6)(a)1. Failure to comply may result in issuance of a noncompliance statement.This form may also be used by Group Child Care Centers and Day Camps to comply with DCF 251.04(6)(a)1. and DCF 252.41(4)(a)1. respectively. Personal information you provide maybe used for secondary purposes Privacy Law, s.15.04(1)(m), Wisconsin Statutes.",
+                    style:'smaller'},
+                {text:"INSTRUCTIONS: The parent / guardian shall fill out the form completely, sign it and submit it to the center prior to the child's first day of attendance. Information on this form shall be keptcurrent. When enrolling a child under two years of age, a completed Intake for Child Under 2 Years form must also be on file prior to the child's first day of attendance.",
+                    style:'smaller'},
+                {text:'Child Information', style:'subheader'},
+                {
+                    table: { 
+                        headerRows: 1,
+                        widths: [200,300,100,100],
+                        body:[
+                            [{text:'Name (Last First Middle)', style: 'tableHeader1'}, {text:'Home Address', style:'tableHeader1'}, {text:'Telephone Number', style:'tableHeader1'},{text:'Birthday (mm/dd/yyyy)', style:'tableHeader1'}],
+                            ['placeholder', 'placeholder', 'placeholder', 'placeholder']
+                        ]
+                    },
 
-        },           
-        {text:'Parent or Guardian', style:'subheader'},
-        {
-            table: { 
-                headerRows: 1,
-                widths: [100,100,200,100,200],
-                body:[
-                    [{text:'Relationship to the Child', style: 'tableHeader1'},{text:'Name', style: 'tableHeader1'}, {text:'Home Address', style:'tableHeader1'}, {text:'Home/Cell Number', style:'tableHeader1'},{text:'Place of Employment-Name & Phone', style:'tableHeader1'}],
-                    ['placeholder', sendData.guardianFirstName, 'placeholder', 'placeholder','placeholder']
-                ]
+                },           
+                {text:'Parent or Guardian', style:'subheader'},
+                {
+                    table: { 
+                        headerRows: 1,
+                        widths: [100,100,200,100,200],
+                        body:[
+                            [{text:'Relationship to the Child', style: 'tableHeader1'},{text:'Name', style: 'tableHeader1'}, {text:'Home Address', style:'tableHeader1'}, {text:'Home/Cell Number', style:'tableHeader1'},{text:'Place of Employment-Name & Phone', style:'tableHeader1'}],
+                            ['placeholder', sendData.guardianFirstName, 'placeholder', 'placeholder','placeholder']
+                        ]
+                    }
+
+                },       
+            ],
+
+            styles: {
+                header: {
+                    fontSize: 18,
+                    bold: true,
+                    alignment: 'center', 
+                },
+
+                subheader: {
+                    fontSize: 14,
+                    alignment: 'left', 
+                    color:'steelblue',
+                    margin: 5, 
+                },        
+                smaller: {
+                    fontSize: 6,
+                },
+
+                tableHeader1: {
+                    fontSize: 12,
+                    bold: true,
+                    alignment:'left',
+                    color:'lightslategray',
+                    margin:5,
+                }
             }
-
-        },       
-    ],
-
-    styles: {
-        header: {
-            fontSize: 18,
-            bold: true,
-            alignment: 'center', 
-        },
-
-        subheader: {
-            fontSize: 14,
-            alignment: 'left', 
-            color:'steelblue',
-            margin: 5, 
-        },        
-        smaller: {
-            fontSize: 6,
-        },
-
-        tableHeader1: {
-            fontSize: 12,
-            bold: true,
-            alignment:'left',
-            color:'lightslategray',
-            margin:5,
-        },
-
+        };
     }
-  };
 
    // open the PDF in a new window
      $scope.openPDF= function(){
-        pdfMake.createPdf($scope.docDefinition).open();
+        pdfMake.createPdf($scope.createEnrollForm()).open();
     }
 
  // print the PDF (temporarily Chrome-only)
     $scope.printPDF=function(){
-        pdfMake.createPdf($scope.docDefinition).print();
+        pdfMake.createPdf($scope.createEnrollForm()).print();
     }
 
  // download the PDF (temporarily Chrome-only)
 
      $scope.downloadPDF= function(){
-        pdfMake.createPdf($scope.docDefinition).download('optionalName.pdf');
+        pdfMake.createPdf($scope.createEnrollForm()).download('optionalName.pdf');
     }
 });
 
