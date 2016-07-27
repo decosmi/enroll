@@ -4,7 +4,7 @@ var app = angular.module('myApp', []);
 
    // {table: widths:[200,200],body:[['Heading 1','Heading 2'],['Here is some text','And here is some more']]}
 
-app.controller('formCtrl', function($scope,$rootScope, $http, sendData){  
+app.controller('formCtrl', function($scope,$rootScope, $http, sendData){ 
   $scope.docDefinition = { 
     pageOrientation: 'landscape',
     content: [
@@ -34,7 +34,7 @@ app.controller('formCtrl', function($scope,$rootScope, $http, sendData){
                 widths: [100,100,200,100,200],
                 body:[
                     [{text:'Relationship to the Child', style: 'tableHeader1'},{text:'Name', style: 'tableHeader1'}, {text:'Home Address', style:'tableHeader1'}, {text:'Home/Cell Number', style:'tableHeader1'},{text:'Place of Employment-Name & Phone', style:'tableHeader1'}],
-                    ['placeholder', 'placeholder', 'placeholder', 'placeholder','placeholder']
+                    ['placeholder', sendData.guardianFirstName, 'placeholder', 'placeholder','placeholder']
                 ]
             }
 
@@ -96,13 +96,23 @@ app.controller('loginCtrl', function($scope,$rootScope, $http, sendData){
       sendData.guardianEmail=googleUser.getBasicProfile().hg;
       //$rootScope.greeting=googleUser.getBasicProfile().Za;
       //$scope.$apply();
-      console.log(sendData.id_token);
         $http({
             method:'GET',
             url:'/guardian',
             params: {id_token:sendData.id_token} 
         }).then(function successCallback(data){
-            console.log(data);
+                sendData.guardianPreferredEmail=data.data.rows[0].email;
+                sendData.guardianFirstName= data.data.rows[0].first_name;
+                sendData.guardianHomeAddress= data.data.rows[0].home_address;
+                sendData.guardianHomeCity=data.data.rows[0].home_city;
+                sendData.guardianHomePhone=data.data.rows[0].home_phone;
+                sendData.guardianHomeState=data.data.rows[0].home_state;
+                sendData.guardianHomeZip=data.data.rows[0].home_zip;
+                sendData.guardianID=data.data.rows[0].id;
+                sendData.guardianLastName=data.data.rows[0].last_name;
+                sendData.guardianWorkEmail=data.data.rows[0].work_email;
+                sendData.guardianWorkName= data.data.rows[0].work_name;
+                sendData.guardianWorkPhone=data.data.rows[0].work_phone
         }, 
         function errorCallback(data){
             console.log("Not in the system");
@@ -133,7 +143,6 @@ app.controller('registerCtrl', function($scope, $http, sendData){
             } 
         }).then(function successCallback(data){
             sendData.guardianID= data.data.rows[0].id;
-            console.log(sendData.guardianID);
             }, 
             function errorCallback(data){
             console.log("It didn't work.");
@@ -169,8 +178,22 @@ app.controller('studentCtrl', function ($scope,$http, sendData){
 });
 
 app.service('sendData',function(){
+    //Guardian Information 
     this.guardianID=0;
-    this.guardianEmail=0;
-    this.studentID=30;
     this.id_token=0;
+    this.guardianFirstName='what the whaaa';
+    this.guardianLastName=0;
+    this.guardianHomeAddress=0;
+    this.guardianHomeCity=0;
+    this.guardianHomePhone=0;
+    this.guardianHomeState=0;
+    this.guardianHomeZip=0;
+    this.guardianPreferredEmail=0;
+    this.guardianWorkEmail=0;
+    this.guardianWorkName=0;
+    this.guardianWorkPhone=0;
+
+    //Student Information 
+    this.studentID=30;
+
 });

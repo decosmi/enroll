@@ -34,9 +34,6 @@ module.exports = (function() {
 			"(first_name, middle_name, last_name, birthdate, gender, social_security, race_ethnicity)" +
 			"VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id", [first_name, middle_name, last_name, birthdate, gender, social_security, race_ethnicity], function (error, result){
 				if (error) return console.log(error);
-				console.log(result.rows[0].id);
-				console.log(guardian_id);
-				console.log(rel_to_student);
 				callback(result.rows[0].id,guardian_id, rel_to_student);
 			}
 		);
@@ -59,6 +56,7 @@ module.exports = (function() {
 			"SELECT * FROM guardians" +
 			" WHERE id_token = $1", [id_token], function(error, result){
 				if (error) return console.log(error);
+				console.log(result);
 				callback(result);
 			}
 		);
