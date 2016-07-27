@@ -20,14 +20,28 @@
     <link href='https://fonts.googleapis.com/css?family=Prompt' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Kanit:800' rel='stylesheet' type='text/css'>
+
+    <script src='build/pdfmake.min.js'></script>
+ 	<script src='build/vfs_fonts.js'></script>
 </head>
 <body ng-app="myApp" >
-	<h1>SimpleEnroll</h1>
-	<div id="login">
+	<h1>SimpleEnroll</h1> 
+	<div id="forms" ng-controller="formCtrl">
+		<h1>PDF Practice</h1>
+		<a href="#" ng-click="openPDF()">Check out this sample PDF!</a>
+	</div>
+	<div id="login" ng-controller="loginCtrl">
 		<h2>Login With Your Gmail Account</h2>
 		<div class="g-signin2" data-onsuccess="onSignIn"></div>
 
 		<p>No Gmail Account?<a href="https://accounts.google.com/SignUp?service=mail&hl=en_us&continue=http%3A%2F%2Fmail.google.com%2Fmail%2F%3Fpc%3Den-ha-na-us-bk&utm_campaign=en&utm_source=en-ha-na-us-bk&utm_medium=ha">Create one here.</a></p>
+		<a href="#" onclick="signOut()">Sign out</a>
+
+		<div id="loginSuccess">
+			<h2>Welcome <span ng-bind="greeting"></span>!</h2>
+			<h3>What would you like to do next?</h3>
+			<span><button>I'd like to add/update my student's information.</button><button>I'd like to check my form completion status</button></span>
+		</div>
 	</div>
 	<div ng-controller="registerCtrl" id="register">
 		<h1>Update Your Personal Information</h1>

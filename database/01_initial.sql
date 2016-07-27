@@ -21,7 +21,8 @@ ALTER TABLE teacher OWNER TO school;
 CREATE TABLE guardians (
 	id 					serial PRIMARY KEY,
  	first_name			text	NOT NULL,
-	last_name			text	NOT NULL,	
+	last_name			text	NOT NULL,
+	id_token			text	NOT NULL,	
 	home_address		text,
 	home_city			text,
 	home_state			text,
