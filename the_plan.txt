@@ -54,18 +54,4 @@ GOOGLE SIGN OUT CODE SNIPPET
 </script>
 
 POTENTIAL CODE FOR PDF CHALLENGE
-First of all you need to set the responseType to arraybuffer. This is required if you want to create a blob of your data. See Sending_and_Receiving_Binary_Data. So your code will look like this:
 
-$http.post('/postUrlHere',{myParams}, {responseType:'arraybuffer'})
-  .success(function (response) {
-       var file = new Blob([response], {type: 'application/pdf'});
-       var fileURL = URL.createObjectURL(file);
-});
-The next part is, you need to use the $sce service to make angular trust your url. This can be done in this way:
-
-$scope.content = $sce.trustAsResourceUrl(fileURL);
-Do not forget to inject the $sce service.
-
-If this is all done you can now embed your pdf:
-
-<embed ng-src="{{content}}" style="width:200px;height:200px;"></embed>

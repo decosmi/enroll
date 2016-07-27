@@ -22,10 +22,14 @@ app.route("/guardian")
 		return response.send(result);
 		});
 	})
-	.get ()
+	.get (function(request,response){
+		databaseManager.readProfile(request.query.id_token, function(result){
+		return response.send(result); 
+		});
+	});
 
 app.route("/student")
 	.post(function(request,response){
 		databaseManager.saveStudent(request.body.first_name, request.body.middle_name, request.body.last_name, request.body.birthdate,
 		request.body.gender, request.body.social_security, request.body.race_ethnicity,request.body.guardian_id, request.body.rel_to_student, databaseManager.saveStudentGuardian);
-	})
+	});

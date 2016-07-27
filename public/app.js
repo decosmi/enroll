@@ -15,8 +15,7 @@ app.controller('formCtrl', function($scope,$rootScope, $http, sendData){
             style:'smaller'},
         {text:"INSTRUCTIONS: The parent / guardian shall fill out the form completely, sign it and submit it to the center prior to the child's first day of attendance. Information on this form shall be keptcurrent. When enrolling a child under two years of age, a completed Intake for Child Under 2 Years form must also be on file prior to the child's first day of attendance.",
             style:'smaller'},
-        {text:'Child Information'},
-
+        {text:'Child Information', style:'subheader'},
         {
             table: { 
                 headerRows: 1,
@@ -25,11 +24,21 @@ app.controller('formCtrl', function($scope,$rootScope, $http, sendData){
                     [{text:'Name (Last First Middle)', style: 'tableHeader1'}, {text:'Home Address', style:'tableHeader1'}, {text:'Telephone Number', style:'tableHeader1'},{text:'Birthday (mm/dd/yyyy)', style:'tableHeader1'}],
                     ['placeholder', 'placeholder', 'placeholder', 'placeholder']
                 ]
+            },
+
+        },           
+        {text:'Parent or Guardian', style:'subheader'},
+        {
+            table: { 
+                headerRows: 1,
+                widths: [100,100,200,100,200],
+                body:[
+                    [{text:'Relationship to the Child', style: 'tableHeader1'},{text:'Name', style: 'tableHeader1'}, {text:'Home Address', style:'tableHeader1'}, {text:'Home/Cell Number', style:'tableHeader1'},{text:'Place of Employment-Name & Phone', style:'tableHeader1'}],
+                    ['placeholder', 'placeholder', 'placeholder', 'placeholder','placeholder']
+                ]
             }
 
-            //layout: 'headerLineOnly',
-
-        }
+        },       
     ],
 
     styles: {
@@ -38,16 +47,23 @@ app.controller('formCtrl', function($scope,$rootScope, $http, sendData){
             bold: true,
             alignment: 'center', 
         },
+
+        subheader: {
+            fontSize: 14,
+            alignment: 'left', 
+            color:'steelblue',
+            margin: 5, 
+        },        
         smaller: {
-            fontSize: 8,
+            fontSize: 6,
         },
 
         tableHeader1: {
-            fontSize: 14,
+            fontSize: 12,
             bold: true,
             alignment:'left',
-            color:'steelblue',
-            margin:[0,10,0,5],
+            color:'lightslategray',
+            margin:5,
         },
 
     }
@@ -70,14 +86,29 @@ app.controller('formCtrl', function($scope,$rootScope, $http, sendData){
     }
 });
 
+//This is the end of the formCtrl.
 
 app.controller('loginCtrl', function($scope,$rootScope, $http, sendData){  
     $rootScope.greeting="";
+
     $scope.onSignIn= function (googleUser) {
-              sendData.id_token=googleUser.getBasicProfile().Ka;
-              $rootScope.greeting=googleUser.getBasicProfile().Za;
-              $scope.$apply();
-            };
+      sendData.id_token=googleUser.getBasicProfile().Ka;
+      sendData.guardianEmail=googleUser.getBasicProfile().hg;
+      //$rootScope.greeting=googleUser.getBasicProfile().Za;
+      //$scope.$apply();
+      console.log(sendData.id_token);
+        $http({
+            method:'GET',
+            url:'/guardian',
+            params: {id_token:sendData.id_token} 
+        }).then(function successCallback(data){
+            console.log(data);
+        }, 
+        function errorCallback(data){
+            console.log("Not in the system");
+            console.log(data);
+        }); 
+    };
 
     window.onSignIn=$scope.onSignIn;
 });
@@ -103,7 +134,6 @@ app.controller('registerCtrl', function($scope, $http, sendData){
         }).then(function successCallback(data){
             sendData.guardianID= data.data.rows[0].id;
             console.log(sendData.guardianID);
-            console.log(sendData.guardianName);
             }, 
             function errorCallback(data){
             console.log("It didn't work.");
@@ -140,7 +170,7 @@ app.controller('studentCtrl', function ($scope,$http, sendData){
 
 app.service('sendData',function(){
     this.guardianID=0;
-    this.guardianName=0;
+    this.guardianEmail=0;
     this.studentID=30;
-    this.id_token;
+    this.id_token=0;
 });

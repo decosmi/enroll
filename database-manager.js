@@ -52,11 +52,23 @@ module.exports = (function() {
 			}
 		);
 	}
+
+	var readProfile= function(id_token,callback){
+		console.log(id_token);
+		pool.query(
+			"SELECT * FROM guardians" +
+			" WHERE id_token = $1", [id_token], function(error, result){
+				if (error) return console.log(error);
+				callback(result);
+			}
+		);
+	}
 	
  	return {
  		saveGuardian: saveGuardian,
  		saveStudent: saveStudent,
- 		saveStudentGuardian: saveStudentGuardian
+ 		saveStudentGuardian: saveStudentGuardian,
+ 		readProfile: readProfile
 	};
 
 })();
