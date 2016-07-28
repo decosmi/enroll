@@ -38,9 +38,10 @@
 		<br>
 
 	<div id="loginSuccess">
-				<h2>Welcome Back! To proceed, select a student.</h2>
+				<h2>Welcome! To proceed, select a student.</h2>
 				<button ng-click="findKids()">Show My Kids!</button>
 				<select ng-model="selectedStudent" ng-options="x for x in kids"></select>
+				<button ng-click="chooseStudent()">Select This Student</button>
 		</div>
 
 	</div>
@@ -199,25 +200,25 @@
 				<div class="row">
 					<h4>Student Name</h4>
 					<div class="col-xs-1">
-						<input type="text" class="form-control" placeholder="First" value="">
+						<input type="text" class="form-control" placeholder="First" ng-model="studentFirst">
 					</div>
 					<div class="col-xs-1">
-						<input type="text" class="form-control" placeholder="Middle" value="">
+						<input type="text" class="form-control" placeholder="Middle" ng-model="studentMid">
 					</div>
 					<div class="col-xs-1">
-						<input type="text" class="form-control" placeholder="Last" value="">
+						<input type="text" class="form-control" placeholder="Last" ng-model="studentLast">
 					</div>
 				</div>
 				<div class="row">
 					<h4>Contact Information</h4>
 					  <div class="col-xs-4">
-					    <input type="text" class="form-control" placeholder="Address" value="">
+					    <input type="text" class="form-control" placeholder="Address" ng-model="guardianHomeAddress">
 					  </div>
 					  <div class="col-xs-2">
-					    <input type="text" class="form-control" placeholder="City" value="">
+					    <input type="text" class="form-control" placeholder="City" ng-model="guardianHomeCity">
 					  </div>
 					  <div class="col-xs-1">
-					    <input type="text" class="form-control" placeholder="State" value="">
+					    <input type="text" class="form-control" placeholder="State" ng-model="guardianHomeState">
 					  </div>
 					  <div class="col-xs-2">
 					    <input type="text" class="form-control" placeholder="Telephone (include area code)" value="">
@@ -227,7 +228,7 @@
 			<h4>Name and Relationship</h4>
 			<div class="row">
 				<div class="col-xs-2">
-					<input type="text" class="form-control" placeholder="Relationship to Student" value="">
+					<input type="text" class="form-control" placeholder="Relationship to Student" ng-model="guardianRel">
 				</div>		
 				<div class="col-xs-4">
 					<input type="text" class="form-control" placeholder="First" ng-model="guardianFirstName">

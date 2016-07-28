@@ -74,7 +74,7 @@ module.exports = (function() {
 	var readStudentProfile= function(id,callback){
 		pool.query(
 			"SELECT * FROM students" +
-			" WHERE id = $1 AND", [id], function(error, result){
+			" WHERE id = $1", [id], function(error, result){
 				if (error) return console.log(error);
 				callback(result);
 			}

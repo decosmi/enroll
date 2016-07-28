@@ -5,6 +5,7 @@ var app = angular.module('myApp', []);
 app.controller('formCtrl', function($scope,$rootScope, $http, sendData){ 
 
  $scope.displayUserData = function(){
+        //guardian data
         $scope.guardianFirstName = sendData.guardianFirstName;
         $scope.guardianCell = sendData.guardianCell;
         $scope.guardianPreferredEmail = sendData.guardianPreferredEmail;
@@ -17,6 +18,16 @@ app.controller('formCtrl', function($scope,$rootScope, $http, sendData){
         $scope.guardianWorkEmail= sendData.guardianWorkEmail;
         $scope.guardianWorkName= sendData.guardianWorkName;
         $scope.guardianWorkPhone= sendData.guardianWorkPhone;
+        $scope.guardianRel=sendData.guardian_rel;
+
+        //student data
+        $scope.studentBDay= sendData.studentBDay;
+        $scope.studentFirst=sendData.studentFirst;
+        $scope.studentLast= sendData.studentLast;
+        $scope.studentMid= sendData.studentMid;
+        $scope.studentRace= sendData.studentRace;
+        $scope.studentSSN= sendData.studentSSN;
+        $scope.studentGender= sendData.studentGender;
     }
 
     $scope.createEnrollForm = function(){
@@ -111,8 +122,7 @@ app.controller('loginCtrl', function($scope,$rootScope, $http, sendData){
     $scope.onSignIn= function (googleUser) {
       sendData.id_token=googleUser.getBasicProfile().Ka;
       sendData.guardianEmail=googleUser.getBasicProfile().hg;
-      //$rootScope.greeting=googleUser.getBasicProfile().Za;
-      //$scope.$apply();
+
         $http({
             method:'GET',
             url:'/guardian',
@@ -151,14 +161,33 @@ app.controller('loginCtrl', function($scope,$rootScope, $http, sendData){
                 $scope.kids.push(data.data.rows[i].student_first);
                 $scope.kidID.push(data.data.rows[i].student_id);
             }      
-        console.log($scope.kids);
-        console.log($scope.kids.indexOf("Another"));
-        console.log($scope.kidID);
-        console.log($scope.kidID[0]);
             }, 
             function errorCallback(data){console.log("Didn't work.")
         });
 
+    }
+
+    $scope.chooseStudent= function(selectedStudent){
+        var studentIndex= $scope.kids.indexOf($scope.selectedStudent);
+        var selectedStudentID= $scope.kidID[studentIndex];
+        sendData.studentID= $scope.kidID[studentIndex];
+        $http({
+            method:'GET',
+            url:'/studentguardian',
+            params:{id:selectedStudentID}
+        }) 
+        .then(function successCallback(data){
+                sendData.studentID=data.data.rows[0].id;
+                sendData.studentBDay=data.data.rows[0].birthdate;
+                sendData.studentFirst=data.data.rows[0].first_name;
+                sendData.studentLast=data.data.rows[0].last_name;
+                sendData.studentMid=data.data.rows[0].middle_name,
+                sendData.studentRace=data.data.rows[0].race_ethnicity;
+                sendData.studentSSN=data.data.rows[0].social_security;
+                sendData.studentGender=data.data.rows[0].gender;
+            }, 
+            function errorCallback(data){console.log("Didn't work.")
+        });
     }
 });
 
@@ -220,6 +249,8 @@ app.controller('studentCtrl', function ($scope,$http, sendData){
         }
     } 
 
+
+
 });
 
 app.service('sendData',function(){
@@ -239,7 +270,7 @@ app.service('sendData',function(){
     this.guardianWorkPhone=0;
 
     //Student Information 
-    this.studentID=30;
+    this.studentID=0;
     this.guardian_rel=0;
     this.studentBDay=0;
     this.studentFirst=0;

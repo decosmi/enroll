@@ -40,3 +40,10 @@ app.route("/student")
 		return response.send(result); 
 		});
 	});
+
+app.route("/studentguardian")
+	.get (function(request,response){
+		databaseManager.readStudentProfile(request.query.id, function(result){
+		return response.send(result); 
+		});
+	});
