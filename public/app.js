@@ -4,6 +4,11 @@ var app = angular.module('myApp', []);
 
 app.controller('formCtrl', function($scope,$rootScope, $http, sendData){ 
 
+    $scope.showGoals=function(){
+        return controlDisplay.showGoals;
+    }
+
+
  $scope.displayUserData = function(){
         //guardian data
         $scope.guardianFirstName = sendData.guardianFirstName;
@@ -47,8 +52,8 @@ app.controller('formCtrl', function($scope,$rootScope, $http, sendData){
                         headerRows: 1,
                         widths: [200,300,100,100],
                         body:[
-                            [{text:'Name (Last First Middle)', style: 'tableHeader1'}, {text:'Home Address', style:'tableHeader1'}, {text:'Telephone Number', style:'tableHeader1'},{text:'Birthday (mm/dd/yyyy)', style:'tableHeader1'}],
-                            ['placeholder', 'placeholder', 'placeholder', 'placeholder']
+                            [{text:'Name (Last First Middle)', style: 'tableHeader1'}, {text:'Home Address', style:'tableHeader1'}, {text:'Telephone Number', style:'tableHeader1'},{text:'Birthday', style:'tableHeader1'}],
+                            [sendData.studentLast+' '+sendData.studentFirst+' '+sendData.studentMid,sendData.guardianHomeAddress+' '+sendData.guardianHomeZip , sendData.guardianCell, sendData.studentBDay]
                         ]
                     },
 
@@ -60,7 +65,7 @@ app.controller('formCtrl', function($scope,$rootScope, $http, sendData){
                         widths: [100,100,200,100,200],
                         body:[
                             [{text:'Relationship to the Child', style: 'tableHeader1'},{text:'Name', style: 'tableHeader1'}, {text:'Home Address', style:'tableHeader1'}, {text:'Home/Cell Number', style:'tableHeader1'},{text:'Place of Employment-Name & Phone', style:'tableHeader1'}],
-                            ['placeholder', sendData.guardianFirstName+' '+sendData.guardianLastName, sendData.guardianHomeAddress+' '+sendData.guardianHomeZip, sendData.guardianCell,sendData.guardianWorkName+' '+sendData.guardianWorkPhone]
+                            [sendData.guardian_rel, sendData.guardianFirstName+' '+sendData.guardianLastName, sendData.guardianHomeAddress+' '+sendData.guardianHomeZip, sendData.guardianCell,sendData.guardianWorkName+' '+sendData.guardianWorkPhone]
                         ]
                     }
 
@@ -128,6 +133,7 @@ app.controller('loginCtrl', function($scope,$rootScope, $http, sendData){
             url:'/guardian',
             params: {id_token:sendData.id_token} 
         }).then(function successCallback(data){
+            console.log(data.data);
             sendData.guardianCell=data.data.rows[0].cell_phone;
             sendData.guardianPreferredEmail=data.data.rows[0].email;
             sendData.guardianFirstName= data.data.rows[0].first_name;
@@ -271,7 +277,7 @@ app.service('sendData',function(){
 
     //Student Information 
     this.studentID=0;
-    this.guardian_rel=0;
+    this.guardian_rel="mother";
     this.studentBDay=0;
     this.studentFirst=0;
     this.studentLast=0;
