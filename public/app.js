@@ -33,7 +33,7 @@ app.controller('formCtrl', function($scope,$rootScope, $http, sendData){
                         widths: [100,100,200,100,200],
                         body:[
                             [{text:'Relationship to the Child', style: 'tableHeader1'},{text:'Name', style: 'tableHeader1'}, {text:'Home Address', style:'tableHeader1'}, {text:'Home/Cell Number', style:'tableHeader1'},{text:'Place of Employment-Name & Phone', style:'tableHeader1'}],
-                            ['placeholder', sendData.guardianFirstName, 'placeholder', 'placeholder','placeholder']
+                            ['placeholder', sendData.guardianFirstName+' '+sendData.guardianLastName, sendData.guardianHomeAddress+' '+sendData.guardianHomeZip, sendData.guardianCell,sendData.guardianWorkName+' '+sendData.guardianWorkPhone]
                         ]
                     }
 
@@ -100,18 +100,19 @@ app.controller('loginCtrl', function($scope,$rootScope, $http, sendData){
             url:'/guardian',
             params: {id_token:sendData.id_token} 
         }).then(function successCallback(data){
-                sendData.guardianPreferredEmail=data.data.rows[0].email;
-                sendData.guardianFirstName= data.data.rows[0].first_name;
-                sendData.guardianHomeAddress= data.data.rows[0].home_address;
-                sendData.guardianHomeCity=data.data.rows[0].home_city;
-                sendData.guardianHomePhone=data.data.rows[0].home_phone;
-                sendData.guardianHomeState=data.data.rows[0].home_state;
-                sendData.guardianHomeZip=data.data.rows[0].home_zip;
-                sendData.guardianID=data.data.rows[0].id;
-                sendData.guardianLastName=data.data.rows[0].last_name;
-                sendData.guardianWorkEmail=data.data.rows[0].work_email;
-                sendData.guardianWorkName= data.data.rows[0].work_name;
-                sendData.guardianWorkPhone=data.data.rows[0].work_phone
+            sendData.guardianCell=data.data.rows[0].cell_phone;
+            sendData.guardianPreferredEmail=data.data.rows[0].email;
+            sendData.guardianFirstName= data.data.rows[0].first_name;
+            sendData.guardianHomeAddress= data.data.rows[0].home_address;
+            sendData.guardianHomeCity=data.data.rows[0].home_city;
+            sendData.guardianHomePhone=data.data.rows[0].home_phone;
+            sendData.guardianHomeState=data.data.rows[0].home_state;
+            sendData.guardianHomeZip=data.data.rows[0].home_zip;
+            sendData.guardianID=data.data.rows[0].id;
+            sendData.guardianLastName=data.data.rows[0].last_name;
+            sendData.guardianWorkEmail=data.data.rows[0].work_email;
+            sendData.guardianWorkName= data.data.rows[0].work_name;
+            sendData.guardianWorkPhone=data.data.rows[0].work_phone
         }, 
         function errorCallback(data){
             console.log("Not in the system");
@@ -159,7 +160,7 @@ app.controller('studentCtrl', function ($scope,$http, sendData){
             data: {first_name:$scope.studentFirst,
              middle_name:$scope.studentMiddle,
              last_name:$scope.studentLast,
-            birthdate: $scope.selectedMonth+$scope.selectedDay+$scope.selectedYear, 
+            birthdate: $scope.selectedMonth+' '+$scope.selectedDay+' ,'+$scope.selectedYear, 
             gender:$scope.gender,
             social_security:$scope.ssn, 
             race_ethnicity: $scope.race,
@@ -167,7 +168,15 @@ app.controller('studentCtrl', function ($scope,$http, sendData){
             rel_to_student: $scope.rel
             }
         }).then (function successCallback(data){
-            console.log(data);
+                sendData.studentBDay=data.config.data.birthdate;
+                sendData.studentFirst=data.config.data.first_name;
+                sendData.studentID=data.config.data.id;
+                sendData.studentLast=data.config.data.last_name;
+                sendData.studentMid=data.config.data.middle_name;
+                sendData.studentRace=data.config.data.race_ethnicity;
+                sendData.guardian_rel=data.config.data.rel_to_student;
+                sendData.studentSSN=data.config.data.social_security;
+                sendData.studentGender=data.config.data.gender;
         }),
         function errorCallback(data){
             console.log("It didn't work");
@@ -180,7 +189,7 @@ app.service('sendData',function(){
     //Guardian Information 
     this.guardianID=0;
     this.id_token=0;
-    this.guardianFirstName='what the whaaa';
+    this.guardianFirstName=0;
     this.guardianLastName=0;
     this.guardianHomeAddress=0;
     this.guardianHomeCity=0;
@@ -194,5 +203,21 @@ app.service('sendData',function(){
 
     //Student Information 
     this.studentID=30;
+    this.guardian_rel=0;
+    this.studentBDay=0;
+    this.studentFirst=0;
+    this.studentLast=0;
+    this.studentMid=0,
+    this.studentRace=0;
+    this.studentSSN=0;
+    this.studentGender=0;
+});
 
+app.service('controlDisplay',function(){
+    this.showRegister=false;
+    this.showLogin=true;
+    this.showUpdate=false;
+    this.showAddStudent=false;
+    this.showEnrollForm=false;
+    this.showHealthForm=false;
 });

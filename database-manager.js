@@ -28,13 +28,14 @@ module.exports = (function() {
 		);
 	}
 
-	var saveStudent= function(first_name, middle_name, last_name, birthdate, gender, social_security, race_ethnicity, guardian_id, rel_to_student,callback){
+	var saveStudent= function(first_name, middle_name, last_name, birthdate, gender, social_security, race_ethnicity, guardian_id, rel_to_student,callback1,callback2){
 		pool.query (
 			"INSERT INTO students" +
 			"(first_name, middle_name, last_name, birthdate, gender, social_security, race_ethnicity)" +
 			"VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id", [first_name, middle_name, last_name, birthdate, gender, social_security, race_ethnicity], function (error, result){
 				if (error) return console.log(error);
-				callback(result.rows[0].id,guardian_id, rel_to_student);
+				callback1(result.rows[0].id,guardian_id, rel_to_student);
+				callback2(result);
 			}
 		);
 	}
@@ -51,12 +52,11 @@ module.exports = (function() {
 	}
 
 	var readProfile= function(id_token,callback){
-		console.log(id_token);
 		pool.query(
 			"SELECT * FROM guardians" +
 			" WHERE id_token = $1", [id_token], function(error, result){
 				if (error) return console.log(error);
-				console.log(result);
+				//console.log(result);
 				callback(result);
 			}
 		);

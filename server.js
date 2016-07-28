@@ -31,5 +31,7 @@ app.route("/guardian")
 app.route("/student")
 	.post(function(request,response){
 		databaseManager.saveStudent(request.body.first_name, request.body.middle_name, request.body.last_name, request.body.birthdate,
-		request.body.gender, request.body.social_security, request.body.race_ethnicity,request.body.guardian_id, request.body.rel_to_student, databaseManager.saveStudentGuardian);
+		request.body.gender, request.body.social_security, request.body.race_ethnicity,request.body.guardian_id, request.body.rel_to_student, databaseManager.saveStudentGuardian,function(result){
+			return response.send(result);
+		});
 	});
