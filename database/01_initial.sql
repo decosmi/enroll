@@ -32,6 +32,10 @@ CREATE TABLE guardians (
 	home_phone			text, 
 	work_phone			text,	
 	work_name			text,
+	work_address		text,
+	work_city			text,
+	work_state			text,
+	work_zip			text,
 	work_email			text
 );
 
@@ -46,6 +50,11 @@ CREATE TABLE students (
 	gender			text,
 	social_security	text,
 	race_ethnicity	text,
+	home_address	text,
+	home_city		text,
+	home_state		text,
+	home_zip		integer,
+	phone 			text,
 	teacher			integer,
 
 	CONSTRAINT fk_from_teacher_to_students		 
