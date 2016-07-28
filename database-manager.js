@@ -55,7 +55,6 @@ module.exports = (function() {
 			"SELECT * FROM guardians" +
 			" WHERE id_token = $1", [id_token], function(error, result){
 				if (error) return console.log(error);
-				//console.log(result);
 				callback(result);
 			}
 		);
@@ -72,13 +71,11 @@ module.exports = (function() {
 
 	}
 
-	var readStudentProfile= function(first_name,last_name,callback){
+	var readStudentProfile= function(id,callback){
 		pool.query(
 			"SELECT * FROM students" +
-			" WHERE first_name = $1 AND"+
-			" last_name = $2", [first_name, last_name], function(error, result){
+			" WHERE id = $1 AND", [id], function(error, result){
 				if (error) return console.log(error);
-				console.log(result);
 				callback(result);
 			}
 		);
