@@ -25,11 +25,10 @@
  	<script src='build/vfs_fonts.js'></script>
 </head>
 <body ng-app="myApp" >
-	<h1>SimpleEnroll</h1> 
-	<div id="forms" ng-controller="formCtrl">
-		<h1>PDF Practice</h1>
-		<a href="#" ng-click="openPDF()">Check out this sample PDF!</a>
-	</div>
+
+<span class="glyphicon glyphicon-pencil col-md-2" aria-hidden="true"><h1 class= "col-md-6">SimpleEnroll</h1></span>
+
+	<br>
 	<div id="login" ng-controller="loginCtrl">
 		<h2>Login With Your Gmail Account</h2>
 		<div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -191,6 +190,81 @@
 	    	<button type="submit" ng-click="addStudent()">Save Student</button><br><br>
 			</form>
 		</div>
+	</div>
+	<div id="enrollForm" ng-controller="formCtrl">
+		<h1>Enrollment Form</h1>
+		<a href="" ng-click="displayUserData()"> Please retrieve my saved information.</a>
+		<form>
+			<h3>Student Information</h3>
+				<div class="row">
+					<h4>Student Name</h4>
+					<div class="col-xs-1">
+						<input type="text" class="form-control" placeholder="First" value="">
+					</div>
+					<div class="col-xs-1">
+						<input type="text" class="form-control" placeholder="Middle" value="">
+					</div>
+					<div class="col-xs-1">
+						<input type="text" class="form-control" placeholder="Last" value="">
+					</div>
+				</div>
+				<div class="row">
+					<h4>Contact Information</h4>
+					  <div class="col-xs-4">
+					    <input type="text" class="form-control" placeholder="Address" value="">
+					  </div>
+					  <div class="col-xs-2">
+					    <input type="text" class="form-control" placeholder="City" value="">
+					  </div>
+					  <div class="col-xs-1">
+					    <input type="text" class="form-control" placeholder="State" value="">
+					  </div>
+					  <div class="col-xs-2">
+					    <input type="text" class="form-control" placeholder="Telephone (include area code)" value="">
+					  </div>				  
+				</div>
+			<h3>Parent/Guardian Information</h3>
+			<h4>Name and Relationship</h4>
+			<div class="row">
+				<div class="col-xs-2">
+					<input type="text" class="form-control" placeholder="Relationship to Student" value="">
+				</div>		
+				<div class="col-xs-4">
+					<input type="text" class="form-control" placeholder="First" ng-model="guardianFirstName">
+
+				</div>
+				<div class="col-xs-4">
+					<input type="text" class="form-control" placeholder="Last" ng-model="guardianLastName">
+				</div>
+			</div>
+				<div class="row">
+					<h4>Contact Information</h4>
+					  <div class="col-xs-4">
+					    <input type="text" class="form-control" placeholder="Address" ng-model="guardianHomeAddress">
+					  </div>
+					  <div class="col-xs-2">
+					    <input type="text" class="form-control" placeholder="City" ng-model="guardianHomeCity">
+					  </div>
+					  <div class="col-xs-1">
+					    <input type="text" class="form-control" placeholder="State" ng-model="guardianHomeState">
+					  </div>
+					  <div class="col-xs-2">
+					    <input type="text" class="form-control" placeholder="Telephone (include area code)" ng-model="guardianHomePhone">
+					  </div>				  
+				</div>
+				<div class="row">
+					<h4>Employment Information</h4>
+					<div class="col-xs-4">
+						<input type="text" class="form-control" placeholder="Place of Employment" ng-model="guardianWorkName">
+					</div>	
+					  <div class="col-xs-2">
+					    <input type="text" class="form-control" placeholder="Telephone (include area code)" ng-model="guardianWorkPhone">
+					  </div>
+				</div>	
+						<button type="submit" ng-click="openPDF()">Submit</button><br>
+		</div>
+
+		</form>
 	</div>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>

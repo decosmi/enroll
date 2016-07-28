@@ -3,6 +3,22 @@
 var app = angular.module('myApp', []);
 
 app.controller('formCtrl', function($scope,$rootScope, $http, sendData){ 
+
+ $scope.displayUserData = function(){
+        $scope.guardianFirstName = sendData.guardianFirstName;
+        $scope.guardianCell = sendData.guardianCell;
+        $scope.guardianPreferredEmail = sendData.guardianPreferredEmail;
+        $scope.guardianHomeAddress = sendData.guardianHomeAddress;
+        $scope.guardianHomeCity = sendData.guardianHomeCity;
+        $scope.guardianHomePhone= sendData.guardianHomePhone;
+        $scope.guardianHomeState= sendData.guardianHomeState;
+        $scope.guardianHomeZip= sendData.guardianHomeZip;
+        $scope.guardianLastName= sendData.guardianLastName;
+        $scope.guardianWorkEmail= sendData.guardianWorkEmail;
+        $scope.guardianWorkName= sendData.guardianWorkName;
+        $scope.guardianWorkPhone= sendData.guardianWorkPhone;
+    }
+
     $scope.createEnrollForm = function(){
         return {
             pageOrientation: 'landscape',

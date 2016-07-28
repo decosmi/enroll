@@ -17,3 +17,11 @@
 #forms{
 	background-color:mediumseagreen;
 }
+
+#enrollForm {
+	background-color:silver;
+}
+
+.glyphicon {
+	font-size:50px;
+}
