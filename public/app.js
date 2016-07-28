@@ -89,6 +89,7 @@ app.controller('formCtrl', function($scope,$rootScope, $http, sendData){
 
 app.controller('loginCtrl', function($scope,$rootScope, $http, sendData){  
     $rootScope.greeting="";
+    $scope.kids=[];
 
     $scope.onSignIn= function (googleUser) {
       sendData.id_token=googleUser.getBasicProfile().Ka;
@@ -121,6 +122,22 @@ app.controller('loginCtrl', function($scope,$rootScope, $http, sendData){
     };
 
     window.onSignIn=$scope.onSignIn;
+
+    $scope.findKids= function(guardian_id){
+        $http({
+            method:'GET',
+            url:'/student',
+            params:{guardian_id:sendData.guardianID}
+        }) 
+        .then(function successCallback(data){
+            console.log(data.data.rows);
+            for (var i=0; i<data.data.rows.length;i++) {
+                $scope.kids.push(data.data.rows[i].student_first);
+            }      
+            }, 
+            function errorCallback(data){console.log("Didn't work.")
+        });
+    }
 });
 
 app.controller('registerCtrl', function($scope, $http, sendData){  
@@ -151,8 +168,6 @@ app.controller('registerCtrl', function($scope, $http, sendData){
 });
 
 app.controller('studentCtrl', function ($scope,$http, sendData){
-    $scope.students=[];
-
     $scope.addStudent= function(){
         $http({
             method:'POST',

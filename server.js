@@ -34,4 +34,9 @@ app.route("/student")
 		request.body.gender, request.body.social_security, request.body.race_ethnicity,request.body.guardian_id, request.body.rel_to_student, databaseManager.saveStudentGuardian,function(result){
 			return response.send(result);
 		});
+	})
+	.get (function(request,response){
+		databaseManager.findGuardianKids(request.query.guardian_id, function(result){
+		return response.send(result); 
+		});
 	});

@@ -34,19 +34,18 @@ module.exports = (function() {
 			"(first_name, middle_name, last_name, birthdate, gender, social_security, race_ethnicity)" +
 			"VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id", [first_name, middle_name, last_name, birthdate, gender, social_security, race_ethnicity], function (error, result){
 				if (error) return console.log(error);
-				callback1(result.rows[0].id,guardian_id, rel_to_student);
+				callback1(result.rows[0].id, first_name,guardian_id, rel_to_student);
 				callback2(result);
 			}
 		);
 	}
 
-	var saveStudentGuardian= function(student_id, guardian_id,rel_to_student){
+	var saveStudentGuardian= function(student_id, student_first, guardian_id, rel_to_student){
 		pool.query (
 			"INSERT INTO student_guardian" +
-			"(student_id, guardian_id, rel_to_student)" +
-			"VALUES ($1, $2, $3) RETURNING id", [student_id, guardian_id, rel_to_student], function (error, result){
+			"(student_id, student_first, guardian_id, rel_to_student)" +
+			"VALUES ($1, $2, $3, $4) RETURNING id", [student_id, student_first, guardian_id, rel_to_student], function (error, result){
 				if (error) return console.log(error);
-				//callback(result);
 			}
 		);
 	}
@@ -61,12 +60,37 @@ module.exports = (function() {
 			}
 		);
 	}
+
+	var findGuardianKids= function(guardian_id,callback){
+		pool.query(
+			"SELECT * FROM student_guardian" +
+			" WHERE guardian_id = $1", [guardian_id], function(error, result){
+				if (error) return console.log(error);
+				callback(result);
+			}
+		);
+
+	}
+
+	var readStudentProfile= function(first_name,last_name,callback){
+		pool.query(
+			"SELECT * FROM students" +
+			" WHERE first_name = $1 AND"+
+			" last_name = $2", [first_name, last_name], function(error, result){
+				if (error) return console.log(error);
+				console.log(result);
+				callback(result);
+			}
+		);
+	}
 	
  	return {
  		saveGuardian: saveGuardian,
  		saveStudent: saveStudent,
  		saveStudentGuardian: saveStudentGuardian,
- 		readProfile: readProfile
+ 		readProfile: readProfile,
+ 		readStudentProfile: readStudentProfile,
+ 		findGuardianKids: findGuardianKids
 	};
 
 })();

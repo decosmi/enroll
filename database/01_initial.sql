@@ -57,6 +57,7 @@ ALTER TABLE students OWNER TO school;
 
 CREATE TABLE student_guardian (
 	id 				serial PRIMARY KEY,
+	student_first	text,
  	student_id 		integer,
  	guardian_id 	integer,
  	rel_to_student	text,	
