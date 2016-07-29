@@ -1,3 +1,12 @@
+.next {
+	font-family: 'Josefin Slab', serif;
+	font-size: 20px;
+	font-weight:bold;
+	border-color: white;
+	border-style: dotted;
+	border-width: 3px;
+}
+
 #register{
 	background-color: burlywood;
 }

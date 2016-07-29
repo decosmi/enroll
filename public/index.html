@@ -27,13 +27,15 @@
 
 		<br>
 		<div ng-controller="loginCtrl">
-			<div id="login">
+			<div id="login" ng-show="showLogin()">
 				<h2>Login With Your Gmail Account</h2>
 				<div class="g-signin2" data-onsuccess="onSignIn"></div>
 
 				<p>No Gmail Account?<a href="https://accounts.google.com/SignUp?service=mail&hl=en_us&continue=http%3A%2F%2Fmail.google.com%2Fmail%2F%3Fpc%3Den-ha-na-us-bk&utm_campaign=en&utm_source=en-ha-na-us-bk&utm_medium=ha">Create one here.</a></p>
-				<a href="#" onclick="signOut()">Sign out</a>
+				<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">NEXT</a>
 				<br>
+<!-- 				<a href="#" onclick="signOut()">Sign out</a> -->
+			<br>
 			</div>
 
 		<div id="loginSuccess">
@@ -42,6 +44,9 @@
 					<select ng-model="selectedStudent" ng-options="x for x in kids"></select>
 					<button ng-click="chooseStudent()">Select This Student</button>
 					<a href="" ng-click="displayUserData()"> Don't see your whole brood? Click here to add a student.</a>
+					<br><br>
+					<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">BACK</a>
+					<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">NEXT</a>
 			</div>
 
 		</div>
@@ -82,6 +87,8 @@
 		    <button type="submit" ng-click="register()">Save</button>
 		  </form>
 		  <br>
+		<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">BACK</a>
+		<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">NEXT</a>
 		</div>
 		<div ng-controller="studentCtrl" id="allStudent">
 			<div id="addKid">
@@ -189,8 +196,10 @@
 
 		    	<button type="submit" ng-click="addStudent()">Save Student & Proceed to Forms</button>
 		    	<button type="submit" ng-click="addStudent()">Save Student & Add Another</button>
-		    	<button type="submit" ng-click="addStudent()">I don't have students to add.</button>
 				</form>
+				<br>
+			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">BACK</a>
+				<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">NEXT</a>
 			</div>
 		</div>
 		<div id="enrollForm" ng-controller="formCtrl">
@@ -263,10 +272,12 @@
 						    <input type="text" class="form-control" placeholder="Telephone (include area code)" ng-model="guardianWorkPhone">
 						  </div>
 					</div>	
+							<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">BACK</a>
 							<button type="submit" ng-click="openPDF()">Submit</button><br>
 			</div>
 
 			</form>
+
 		</div>
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>

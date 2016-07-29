@@ -2,10 +2,14 @@
 
 var app = angular.module('myApp', []);
 
-app.controller('formCtrl', function($scope,$rootScope, $http, sendData){ 
+app.controller('formCtrl', function($scope,$rootScope, $http, sendData,controlDisplay){ 
 
-    $scope.showGoals=function(){
-        return controlDisplay.showGoals;
+    $scope.showUpdateOnly=function(){
+        return controlDisplay.showUpdate=true;
+            controlDisplay.showRegister=false;
+            controlDisplay.showLogin=false;
+            controlDisplay.showAddStudent=false;
+            controlDispaly.showEnrollForm=false;
     }
 
 
@@ -119,7 +123,11 @@ app.controller('formCtrl', function($scope,$rootScope, $http, sendData){
 
 //This is the end of the formCtrl.
 
-app.controller('loginCtrl', function($scope,$rootScope, $http, sendData){  
+app.controller('loginCtrl', function($scope,$rootScope, $http, sendData,controlDisplay){  
+    $scope.showLogin=function(){
+        return controlDisplay.showLogin;
+    }
+
     $rootScope.greeting="";
     $scope.kids=[];
     $scope.kidID=[];
@@ -146,7 +154,9 @@ app.controller('loginCtrl', function($scope,$rootScope, $http, sendData){
             sendData.guardianLastName=data.data.rows[0].last_name;
             sendData.guardianWorkEmail=data.data.rows[0].work_email;
             sendData.guardianWorkName= data.data.rows[0].work_name;
-            sendData.guardianWorkPhone=data.data.rows[0].work_phone
+            sendData.guardianWorkPhone=data.data.rows[0].work_phone;
+            //controlDisplay.showUpdate=true;
+            controlDisplay.showLogin=false;
         }, 
         function errorCallback(data){
             console.log("Not in the system");
@@ -197,7 +207,7 @@ app.controller('loginCtrl', function($scope,$rootScope, $http, sendData){
     }
 });
 
-app.controller('registerCtrl', function($scope, $http, sendData){  
+app.controller('registerCtrl', function($scope, $http, sendData,controlDisplay){  
     $scope.register = function(){   
         $http({
             method:'POST',
@@ -224,7 +234,7 @@ app.controller('registerCtrl', function($scope, $http, sendData){
     }
 });
 
-app.controller('studentCtrl', function ($scope,$http, sendData){
+app.controller('studentCtrl', function ($scope,$http, sendData,controlDisplay){
     $scope.addStudent= function(){
         $http({
             method:'POST',
@@ -288,10 +298,9 @@ app.service('sendData',function(){
 });
 
 app.service('controlDisplay',function(){
-    this.showRegister=false;
     this.showLogin=true;
     this.showUpdate=false;
     this.showAddStudent=false;
     this.showEnrollForm=false;
-    this.showHealthForm=false;
+    this.showWelcome=false;
 });
