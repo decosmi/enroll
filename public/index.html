@@ -32,7 +32,7 @@
 				<div class="g-signin2" data-onsuccess="onSignIn"></div>
 
 				<p>No Gmail Account?<a href="https://accounts.google.com/SignUp?service=mail&hl=en_us&continue=http%3A%2F%2Fmail.google.com%2Fmail%2F%3Fpc%3Den-ha-na-us-bk&utm_campaign=en&utm_source=en-ha-na-us-bk&utm_medium=ha">Create one here.</a></p>
-				<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">NEXT</a>
+<!-- 				<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">NEXT</a> -->
 				<br>
 <!-- 				<a href="#" onclick="signOut()">Sign out</a> -->
 			<br>
@@ -50,7 +50,7 @@
 			</div>
 
 		</div>
-		<div ng-controller="registerCtrl" id="register">
+		<div ng-controller="registerCtrl" id="update" ng-show="showUpdate()">
 			<h1>Update Your Personal Information</h1>
 		  <form novalidate>
 		    First Name:<br>

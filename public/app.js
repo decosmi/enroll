@@ -4,13 +4,6 @@ var app = angular.module('myApp', []);
 
 app.controller('formCtrl', function($scope,$rootScope, $http, sendData,controlDisplay){ 
 
-    $scope.showUpdateOnly=function(){
-        return controlDisplay.showUpdate=true;
-            controlDisplay.showRegister=false;
-            controlDisplay.showLogin=false;
-            controlDisplay.showAddStudent=false;
-            controlDispaly.showEnrollForm=false;
-    }
 
 
  $scope.displayUserData = function(){
@@ -155,7 +148,7 @@ app.controller('loginCtrl', function($scope,$rootScope, $http, sendData,controlD
             sendData.guardianWorkEmail=data.data.rows[0].work_email;
             sendData.guardianWorkName= data.data.rows[0].work_name;
             sendData.guardianWorkPhone=data.data.rows[0].work_phone;
-            //controlDisplay.showUpdate=true;
+            controlDisplay.showUpdate=true;
             controlDisplay.showLogin=false;
         }, 
         function errorCallback(data){
@@ -208,6 +201,11 @@ app.controller('loginCtrl', function($scope,$rootScope, $http, sendData,controlD
 });
 
 app.controller('registerCtrl', function($scope, $http, sendData,controlDisplay){  
+    $scope.showUpdate=function(){
+        return controlDisplay.showUpdate;
+    }
+
+
     $scope.register = function(){   
         $http({
             method:'POST',
