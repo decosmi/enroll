@@ -18,78 +18,77 @@
 
     <link href="style.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
     <script src='build/pdfmake.min.js'></script>
  	<script src='build/vfs_fonts.js'></script>
 </head>
 <body ng-app="myApp" >
-<div class="container">
-	<h1><img id="logo" src="logo.png" alt="clipboard" align="middle"/><span id="simpletitle">Simple</span><span id="enrolltitle">Enroll</span></h1>
-
-		<br>
-		<div ng-controller="loginCtrl">
-			<div id="login" ng-show="showLogin()">
-				<h2>Login With Your Gmail Account</h2>
-				<div class="g-signin2" data-onsuccess="onSignIn"></div>
-
-				<p>No Gmail Account?<a href="https://accounts.google.com/SignUp?service=mail&hl=en_us&continue=http%3A%2F%2Fmail.google.com%2Fmail%2F%3Fpc%3Den-ha-na-us-bk&utm_campaign=en&utm_source=en-ha-na-us-bk&utm_medium=ha">Create one here.</a></p>
-<!-- 				<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">NEXT</a> -->
-				<br>
-<!-- 				<a href="#" onclick="signOut()">Sign out</a> -->
-			<br>
-			</div>
-
-		<div id="loginSuccess" ng-show="showWelcome()">
-					<h2>Welcome! To proceed, select a student.</h2>
-					<button ng-click="findKids()">Show My Kids!</button>
-					<select ng-model="selectedStudent" ng-options="x for x in kids"></select>
-					<button ng-click="chooseStudent()">Select This Student</button>
-					<a href="" ng-click="toggleAddStudentTrue()"> Don't see your whole brood? Click here to add a student.</a>
-					<br><br>
-					<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">BACK</a>
-					<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="hideWelcome(toggleEnrollTrue)">NEXT</a>
-			</div>
-
+<div class="container-fluid">
+	<div id="intro">
+		<h1><img id="logo" src="logo.png" alt="clipboard" align="middle"/><span id="simpletitle">Simple</span><span id="enrolltitle">Enroll</span></h1>
+	</div>
+	<div ng-controller="loginCtrl">
+		<div id="login" ng-show="showLogin()">
+			<h2>Login With Your Gmail Account</h2>
+			<div class="g-signin2" data-onsuccess="onSignIn"></div>
+			<p>No Gmail Account?<a href="https://accounts.google.com/SignUp?service=mail&hl=en_us&continue=http%3A%2F%2Fmail.google.com%2Fmail%2F%3Fpc%3Den-ha-na-us-bk&utm_campaign=en&utm_source=en-ha-na-us-bk&utm_medium=ha">Create one here.</a></p>
 		</div>
-		<div ng-controller="registerCtrl" id="update" ng-show="showUpdate()">
-			<h1>Update Your Personal Information</h1>
-		  <form novalidate>
-		    First Name:<br>
-		    <input type="text" ng-model="guardianFirstName"><br>
-		    Last Name:<br>
-		    <input type="text" ng-model="guardianLastName">
+		<div id="loginSuccess" ng-show="showWelcome()">
+			<h2>To proceed, select a student.</h2>
+			<button ng-click="findKids()">Show My Kids!</button>
+			<select ng-model="selectedStudent" ng-options="x for x in kids"></select>
+			<button ng-click="chooseStudent()">Select This Student</button>
+			<a href="" ng-click="toggleAddStudentTrue()"> Don't see your whole brood? Click here to add a student.</a>
+			<br><br>
+			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">BACK</a>
+			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="hideWelcome(toggleEnrollTrue)">NEXT</a>
+		</div>
+	</div>
 
+	<div ng-controller="registerCtrl" id="update" ng-show="showUpdate()">
+		<h1>Welcome! Update Your Personal Information</h1>
+		<form>
+			<div class="row col-md-12">
+				<h3 class="col-md-4">First Name</h3>				   
+				<input type="text" class="col-md-4" ng-model="guardianFirstName">
+
+			</div>
+			<div class="row col-md-12">
+				<h3 class="col-md-4">Last Name</h3>
+			    <input type="text" class="col-md-4" ng-model="guardianLastName">
+			</div>
 		    <div>
-		    	<h3>Contact Information</h3>
-		    	Address:
+		    	<h2>Contact Information</h2>
+		    	<h3>Address</h3>
 			    <input type="text" ng-model="guardianAddress">
-			    City:
+			    <h3>City</h3>
 			    <input type="text" ng-model="guardianCity">
-			    State:
+			    <h3>State</h3>
 			    <input type="text" ng-model="guardianState">
-			    Zip Code: 
+			    <h3>Zip Code</h3>
 			    <input type="text" ng-model="guardianZip">
 		    	<br><br>
-			    Cell Phone:
+			    <h3>Cell Phone</h3>
 			    <input type="text" ng-model="guardianCell">
-			    Home Phone:
+			    <h3>Home Phone</h3>
 			    <input type="text" ng-model="guardianHome">
-			    Preferred Email:
+			    <h3>Preferred Email</h3>
 		    	<input type="text" ng-model="guardianEmail">
 		    </div>
 		    <div>
-		    	<h3>Employment Information</h3>
-			    Place of Employment:
+		    	<h2>Employment Information</h2>
+			    <h3>Place of Employment</h3>
 			    <input type="text" ng-model="guardianWorkName">
-			    Work Phone:
+			    <h3>Work Phone</h3>
 			    <input type="text" ng-model="guardianWorkPhone">
 		    </div>
-		    <br><br>
-		    <button type="submit" ng-click="register()">Save</button>
-		  </form>
-		  <br>
-		<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">BACK</a>
-		<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="hideUpdate(toggleWelcomeTrue)">NEXT</a>
-		</div>
+	    	<br><br>
+	   		<button class= "btn-lg" type="submit" ng-click="register()">Save</button>
+			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">BACK</a>
+			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="hideUpdate(toggleWelcomeTrue)">NEXT</a>
+	  </form>
+	</div>
+
 		<div ng-controller="studentCtrl" id="allStudent" ng-show="showAddStudent()">
 			<div id="addKid">
 			<h1>Add A Student</h1>
@@ -282,6 +281,6 @@
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	<script src="app.js"></script>
-</div>
+	</div>
 </body>
-</html>-
+</html>

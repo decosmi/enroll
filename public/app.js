@@ -225,7 +225,6 @@ app.controller('registerCtrl', function($scope, $http, sendData,controlDisplay){
     }
 
     $scope.hideUpdate=function(callback){
-        console.log(callback);
         callback();
         return controlDisplay.showUpdate=false;
     }

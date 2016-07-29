@@ -8,7 +8,9 @@
 }
 
 #update {
-	background-color: burlywood;
+	background-color: green;
+	opacity: .8;
+	padding:10px;
 }
 
 #login {
@@ -45,11 +47,14 @@ a {
 	font-family: 'Josefin Slab', serif;
 	font-weight: bold;
 	font-size:80px;
+	color: gray;
 }
 
 #simpletitle {
 	font-family: 'Josefin Slab', serif;
 	font-size:80px;
+	color: tomato;
+	font-weight:normal;
 }
 
 #logo {
@@ -58,8 +63,26 @@ a {
 	margin-right:10px;
 }
 
-/*body {
-	background-color: green;
-	opacity:.5;
+body {
+	background-image: url("crayons.jpg");
+	background-size: cover;
+	font-family: 'Maven Pro', sans-serif;
 
-}*/
+}
+
+#intro {
+	background-color:white;
+	padding:10px;
+  	border-bottom: solid tomato 5px;
+}
+
+h1 {
+	font-family: 'Josefin Slab', serif;
+	font-weight: bold;
+	color:white;
+}
+
+
+input {
+	margin:5px;
+}
