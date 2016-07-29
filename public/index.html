@@ -38,15 +38,15 @@
 			<br>
 			</div>
 
-		<div id="loginSuccess">
+		<div id="loginSuccess" ng-show="showWelcome()">
 					<h2>Welcome! To proceed, select a student.</h2>
 					<button ng-click="findKids()">Show My Kids!</button>
 					<select ng-model="selectedStudent" ng-options="x for x in kids"></select>
 					<button ng-click="chooseStudent()">Select This Student</button>
-					<a href="" ng-click="displayUserData()"> Don't see your whole brood? Click here to add a student.</a>
+					<a href="" ng-click="toggleAddStudentTrue()"> Don't see your whole brood? Click here to add a student.</a>
 					<br><br>
 					<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">BACK</a>
-					<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">NEXT</a>
+					<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="hideWelcome(toggleEnrollTrue)">NEXT</a>
 			</div>
 
 		</div>
@@ -88,9 +88,9 @@
 		  </form>
 		  <br>
 		<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">BACK</a>
-		<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">NEXT</a>
+		<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="hideUpdate(toggleWelcomeTrue)">NEXT</a>
 		</div>
-		<div ng-controller="studentCtrl" id="allStudent">
+		<div ng-controller="studentCtrl" id="allStudent" ng-show="showAddStudent()">
 			<div id="addKid">
 			<h1>Add A Student</h1>
 				<form>
@@ -202,7 +202,7 @@
 				<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">NEXT</a>
 			</div>
 		</div>
-		<div id="enrollForm" ng-controller="formCtrl">
+		<div id="enrollForm" ng-controller="formCtrl" ng-show="showEnrollForm()">
 			<h1>Enrollment Form</h1>
 			<a href="" ng-click="displayUserData()"> Please retrieve my saved information.</a>
 			<form>

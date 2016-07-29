@@ -3,6 +3,9 @@
 var app = angular.module('myApp', []);
 
 app.controller('formCtrl', function($scope,$rootScope, $http, sendData,controlDisplay){ 
+    $scope.showEnrollForm=function(){
+        return controlDisplay.showEnrollForm;
+    }
 
 
 
@@ -119,6 +122,19 @@ app.controller('formCtrl', function($scope,$rootScope, $http, sendData,controlDi
 app.controller('loginCtrl', function($scope,$rootScope, $http, sendData,controlDisplay){  
     $scope.showLogin=function(){
         return controlDisplay.showLogin;
+    }    
+
+    $scope.showWelcome=function(){
+        return controlDisplay.showWelcome;
+    }
+
+    $scope.toggleEnrollTrue= function (){
+        return controlDisplay.toggleEnrollTrue();
+    }
+
+    $scope.hideWelcome=function(callback){
+    callback();
+    return controlDisplay.showWelcome=false;
     }
 
     $rootScope.greeting="";
@@ -134,7 +150,6 @@ app.controller('loginCtrl', function($scope,$rootScope, $http, sendData,controlD
             url:'/guardian',
             params: {id_token:sendData.id_token} 
         }).then(function successCallback(data){
-            console.log(data.data);
             sendData.guardianCell=data.data.rows[0].cell_phone;
             sendData.guardianPreferredEmail=data.data.rows[0].email;
             sendData.guardianFirstName= data.data.rows[0].first_name;
@@ -201,10 +216,19 @@ app.controller('loginCtrl', function($scope,$rootScope, $http, sendData,controlD
 });
 
 app.controller('registerCtrl', function($scope, $http, sendData,controlDisplay){  
+    $scope.toggleWelcomeTrue= function (){
+        return controlDisplay.toggleWelcomeTrue();
+    }
+
     $scope.showUpdate=function(){
         return controlDisplay.showUpdate;
     }
 
+    $scope.hideUpdate=function(callback){
+        console.log(callback);
+        callback();
+        return controlDisplay.showUpdate=false;
+    }
 
     $scope.register = function(){   
         $http({
@@ -233,6 +257,10 @@ app.controller('registerCtrl', function($scope, $http, sendData,controlDisplay){
 });
 
 app.controller('studentCtrl', function ($scope,$http, sendData,controlDisplay){
+    $scope.toggleAddStudentTrue=function(){
+        return controlDisplay.toggleAddStudentTrue();
+    }
+
     $scope.addStudent= function(){
         $http({
             method:'POST',
@@ -301,4 +329,15 @@ app.service('controlDisplay',function(){
     this.showAddStudent=false;
     this.showEnrollForm=false;
     this.showWelcome=false;
+    this.toggleWelcomeTrue= function(){
+        return this.showWelcome=true;
+    }
+
+    this.toggleEnrollTrue= function(){
+    return this.showEnrollForm=true;
+    }
+
+    this.toggleAddStudentTrue= function(){
+    return this.showAddStudent=true;
+    }
 });
