@@ -34,11 +34,11 @@
 			<p>No Gmail Account?<a href="https://accounts.google.com/SignUp?service=mail&hl=en_us&continue=http%3A%2F%2Fmail.google.com%2Fmail%2F%3Fpc%3Den-ha-na-us-bk&utm_campaign=en&utm_source=en-ha-na-us-bk&utm_medium=ha">Create one here.</a></p>
 		</div>
 		<div id="loginSuccess" ng-show="showWelcome()">
-			<h2>To proceed, select a student.</h2>
+			<h1>To proceed, select a student.</h1>
 			<button ng-click="findKids()">Show My Kids!</button>
 			<select ng-model="selectedStudent" ng-options="x for x in kids"></select>
 			<button ng-click="chooseStudent()">Select This Student</button>
-			<a href="" ng-click="toggleAddStudentTrue()"> Don't see your whole brood? Click here to add a student.</a>
+			<a href="" ng-click="toggleAddStudentTrue(hideWelcome(callback))"> Don't see your whole brood? Click here to add a student.</a>
 			<br><br>
 			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">BACK</a>
 			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="hideWelcome(toggleEnrollTrue)">NEXT</a>

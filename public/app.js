@@ -120,6 +120,20 @@ app.controller('formCtrl', function($scope,$rootScope, $http, sendData,controlDi
 //This is the end of the formCtrl.
 
 app.controller('loginCtrl', function($scope,$rootScope, $http, sendData,controlDisplay){  
+    $scope.callback=function(){
+        return ;
+    }
+
+    $scope.toggleAddStudentTrue= function(){
+        return controlDisplay.toggleAddStudentTrue();
+
+    }
+
+    $scope.toggleWelcomeFalse= function(){
+    return controlDisplay.toggleWelcomeFalse;
+    }
+
+
     $scope.showLogin=function(){
         return controlDisplay.showLogin;
     }    
@@ -256,8 +270,12 @@ app.controller('registerCtrl', function($scope, $http, sendData,controlDisplay){
 });
 
 app.controller('studentCtrl', function ($scope,$http, sendData,controlDisplay){
-    $scope.toggleAddStudentTrue=function(){
+    $scope.showAddStudent=function(){
+        return controlDisplay.showAddStudent;
+    }
+    $scope.toggleAddStudentTrue=function(callback){
         return controlDisplay.toggleAddStudentTrue();
+        callback();
     }
 
     $scope.addStudent= function(){
@@ -332,11 +350,19 @@ app.service('controlDisplay',function(){
         return this.showWelcome=true;
     }
 
+    this.toggleWelcomeFalse= function(){
+    return this.showWelcome=false;
+    }
+
     this.toggleEnrollTrue= function(){
     return this.showEnrollForm=true;
     }
 
     this.toggleAddStudentTrue= function(){
     return this.showAddStudent=true;
+    }
+
+    this.toggleAddStudentFalse= function(){
+    return this.showAddStudent=false;
     }
 });
