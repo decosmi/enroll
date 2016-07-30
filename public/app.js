@@ -274,9 +274,11 @@ app.controller('studentCtrl', function ($scope,$http, sendData,controlDisplay){
         return controlDisplay.toggleWelcomeTrue();
     }
 
-    $scope.showWelcome=function(){
-        return controlDisplay.showWelcome;
+
+    $scope.toggleWelcomeFalse= function(){
+        return controlDisplay.toggleWelcomeFalse();
     }
+
 
     $scope.showAddStudent=function(){
         return controlDisplay.showAddStudent;
@@ -285,6 +287,13 @@ app.controller('studentCtrl', function ($scope,$http, sendData,controlDisplay){
         return controlDisplay.toggleAddStudentTrue();
         callback();
     }
+
+    $scope.toggleAddStudentFalse= function(){
+        controlDisplay.showWelcome=true;
+        return controlDisplay.toggleAddStudentFalse();
+    }
+
+
 
     $scope.addStudent= function(){
         $http({
