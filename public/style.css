@@ -9,7 +9,6 @@
 
 #update {
 	background-color: green;
-	opacity: .8;
 	padding:10px;
 }
 
@@ -84,5 +83,9 @@ h1 {
 
 
 input {
-	margin:5px;
+	margin:10px;
+}
+
+placeholder {
+
 }

@@ -48,14 +48,39 @@
 	<div ng-controller="registerCtrl" id="update" ng-show="showUpdate()">
 		<h1>Welcome! Update Your Personal Information</h1>
 		<form>
-			<div class="row col-md-12">
-				<h3 class="col-md-4">First Name</h3>				   
-				<input type="text" class="col-md-4" ng-model="guardianFirstName">
-
+			<div class="row">
+				<div class="col-xs-4">
+					<input type="text" class="form-control" placeholder="First" ng-model="guardianFirstName">
+				</div>
+				<div class="col-xs-4">
+					<input type="text" class="form-control" placeholder="Last" ng-model="guardianLastName">
+				</div>		
 			</div>
-			<div class="row col-md-12">
-				<h3 class="col-md-4">Last Name</h3>
-			    <input type="text" class="col-md-4" ng-model="guardianLastName">
+			<div class="row">
+				  <div class="col-xs-4">
+				    <input type="text" class="form-control" placeholder="Address" ng-model="guardianHomeAddress">
+				  </div>
+				  <div class="col-xs-2">
+				    <input type="text" class="form-control" placeholder="City" ng-model="guardianHomeCity">
+				  </div>
+				  <div class="col-xs-1">
+				    <input type="text" class="form-control" placeholder="State" ng-model="guardianHomeState">
+				  </div>
+			</div>
+
+			<div class="row">
+				  <div class="col-xs-4">
+				    <input type="text" class="form-control" placeholder="Cell Phone (include area code)" ng-model="guardianHomePhone">
+				  </div>	
+				  <div class="col-xs-4">
+				    <input type="text" class="form-control" placeholder="Home Phone (include area code)" ng-model="guardianHomePhone">
+				  </div>	
+				  <div class="col-xs-4">
+				    <input type="text" class="form-control" placeholder="Preferred Email" ng-model="guardianHomePhone">
+				  </div>	
+			</div>	
+			
+
 			</div>
 		    <div>
 		    	<h2>Contact Information</h2>
