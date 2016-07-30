@@ -270,6 +270,14 @@ app.controller('registerCtrl', function($scope, $http, sendData,controlDisplay){
 });
 
 app.controller('studentCtrl', function ($scope,$http, sendData,controlDisplay){
+    $scope.toggleWelcomeTrue= function (){
+        return controlDisplay.toggleWelcomeTrue();
+    }
+
+    $scope.showWelcome=function(){
+        return controlDisplay.showWelcome;
+    }
+
     $scope.showAddStudent=function(){
         return controlDisplay.showAddStudent;
     }
@@ -302,6 +310,8 @@ app.controller('studentCtrl', function ($scope,$http, sendData,controlDisplay){
                 sendData.guardian_rel=data.config.data.rel_to_student;
                 sendData.studentSSN=data.config.data.social_security;
                 sendData.studentGender=data.config.data.gender;
+                controlDisplay.showWelcome=true;
+                controlDisplay.showAddStudent=false;
         }),
         function errorCallback(data){
             console.log("It didn't work");
