@@ -48,6 +48,7 @@
 	<div ng-controller="registerCtrl" id="update" ng-show="showUpdate()">
 		<h1>Welcome! Update Your Personal Information</h1>
 		<form>
+		<h2>Contact Information</h2>
 			<div class="row">
 				<div class="col-xs-4">
 					<input type="text" class="form-control" placeholder="First" ng-model="guardianFirstName">
@@ -58,59 +59,56 @@
 			</div>
 			<div class="row">
 				  <div class="col-xs-4">
-				    <input type="text" class="form-control" placeholder="Address" ng-model="guardianHomeAddress">
+				    <input type="text" class="form-control" placeholder="Address" ng-model="guardianAddress">
 				  </div>
 				  <div class="col-xs-2">
-				    <input type="text" class="form-control" placeholder="City" ng-model="guardianHomeCity">
+				    <input type="text" class="form-control" placeholder="City" ng-model="guardianCity">
 				  </div>
 				  <div class="col-xs-1">
-				    <input type="text" class="form-control" placeholder="State" ng-model="guardianHomeState">
+				    <input type="text" class="form-control" placeholder="State" ng-model="guardianState">
+				  </div>
+				  <div class="col-xs-2">
+				    <input type="text" class="form-control" placeholder="Zip Code" ng-model="guardianZip">
 				  </div>
 			</div>
 
 			<div class="row">
 				  <div class="col-xs-4">
-				    <input type="text" class="form-control" placeholder="Cell Phone (include area code)" ng-model="guardianHomePhone">
+				    <input type="text" class="form-control" placeholder="Cell Phone (include area code)" ng-model="guardianCell">
 				  </div>	
 				  <div class="col-xs-4">
-				    <input type="text" class="form-control" placeholder="Home Phone (include area code)" ng-model="guardianHomePhone">
+				    <input type="text" class="form-control" placeholder="Home Phone (include area code)" ng-model="guardianHome">
 				  </div>	
 				  <div class="col-xs-4">
-				    <input type="text" class="form-control" placeholder="Preferred Email" ng-model="guardianHomePhone">
+				    <input type="text" class="form-control" placeholder="Preferred Email" ng-model="guardianEmail">
 				  </div>	
 			</div>	
-			
-
+			<h2>Employment Information</h2>
+			<div class="row">
+				  <div class="col-xs-4">
+				    <input type="text" class="form-control" placeholder="Place of Employment" ng-model="guardianWorkName">
+				  </div>
+				  <div class="col-xs-4">
+				    <input type="text" class="form-control" placeholder="Work Phone (include area code)" ng-model="guardianWorkPhone">
+				  </div>	
+				  <div class="col-xs-4">
+				    <input type="text" class="form-control" placeholder="Work Email" ng-model="guardianWorkEmail">
+				  </div>	
 			</div>
-		    <div>
-		    	<h2>Contact Information</h2>
-		    	<h3>Address</h3>
-			    <input type="text" ng-model="guardianAddress">
-			    <h3>City</h3>
-			    <input type="text" ng-model="guardianCity">
-			    <h3>State</h3>
-			    <input type="text" ng-model="guardianState">
-			    <h3>Zip Code</h3>
-			    <input type="text" ng-model="guardianZip">
-		    	<br><br>
-			    <h3>Cell Phone</h3>
-			    <input type="text" ng-model="guardianCell">
-			    <h3>Home Phone</h3>
-			    <input type="text" ng-model="guardianHome">
-			    <h3>Preferred Email</h3>
-		    	<input type="text" ng-model="guardianEmail">
-		    </div>
-		    <div>
-		    	<h2>Employment Information</h2>
-			    <h3>Place of Employment</h3>
-			    <input type="text" ng-model="guardianWorkName">
-			    <h3>Work Phone</h3>
-			    <input type="text" ng-model="guardianWorkPhone">
-		    </div>
-	    	<br><br>
-	   		<button class= "btn-lg" type="submit" ng-click="register()">Save</button>
-			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">BACK</a>
-			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="hideUpdate(toggleWelcomeTrue)">NEXT</a>
+			<div class="row">
+				  <div class="col-xs-4">
+				    <input type="text" class="form-control" placeholder="Work Address" ng-model="guardianWorkAddress">
+				  </div>
+				  <div class="col-xs-2">
+				    <input type="text" class="form-control" placeholder="City" ng-model="guardianWorkCity">
+				  </div>
+				  <div class="col-xs-1">
+				    <input type="text" class="form-control" placeholder="State" ng-model="guardianWorkState">
+				  </div>
+			</div>
+   		<button class= "btn-lg" type="submit" ng-click="register()">Save</button>
+		<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">BACK</a>
+		<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="hideUpdate(toggleWelcomeTrue)">NEXT</a>
 	  </form>
 	</div>
 
