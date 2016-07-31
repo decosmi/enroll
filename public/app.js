@@ -7,6 +7,19 @@ app.controller('formCtrl', function($scope,$rootScope, $http, sendData,controlDi
         return controlDisplay.showEnrollForm;
     }
 
+    $scope.toggleWelcomeTrue= function(){
+        return controlDisplay.toggleWelcomeTrue();
+    }
+
+    $scope.showWelcome=function(){
+        return controlDisplay.showWelcome;
+    }
+
+    $scope.toggleEnrollFalse= function(callback){
+        callback();
+        return controlDisplay.showEnrollForm=false;
+
+    }
 
 
  $scope.displayUserData = function(){
@@ -120,6 +133,10 @@ app.controller('formCtrl', function($scope,$rootScope, $http, sendData,controlDi
 //This is the end of the formCtrl.
 
 app.controller('loginCtrl', function($scope,$rootScope, $http, sendData,controlDisplay){  
+    $scope.toggleUpdateTrue= function(){
+    return controlDisplay.showUpdate=true;
+    }
+
     $scope.callback=function(){
         return ;
     }
@@ -288,9 +305,10 @@ app.controller('studentCtrl', function ($scope,$http, sendData,controlDisplay){
         callback();
     }
 
-    $scope.toggleAddStudentFalse= function(){
+    $scope.toggleAddStudentFalse= function(callback){
         controlDisplay.showWelcome=true;
         return controlDisplay.toggleAddStudentFalse();
+        callback();
     }
 
 
@@ -326,9 +344,6 @@ app.controller('studentCtrl', function ($scope,$http, sendData,controlDisplay){
             console.log("It didn't work");
         }
     } 
-
-
-
 });
 
 app.service('sendData',function(){
@@ -365,6 +380,7 @@ app.service('controlDisplay',function(){
     this.showAddStudent=false;
     this.showEnrollForm=false;
     this.showWelcome=false;
+
     this.toggleWelcomeTrue= function(){
         return this.showWelcome=true;
     }
@@ -377,11 +393,20 @@ app.service('controlDisplay',function(){
     return this.showEnrollForm=true;
     }
 
+    this.toggleEnrollFalse= function(callback){
+    return this.showEnrollForm=false;
+    }
+
+
     this.toggleAddStudentTrue= function(){
     return this.showAddStudent=true;
     }
 
     this.toggleAddStudentFalse= function(){
     return this.showAddStudent=false;
+    }
+
+    this.toggleUpdateTrue= function(){
+    return this.showUpdate=true;
     }
 });

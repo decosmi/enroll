@@ -40,7 +40,7 @@
 			<button ng-click="chooseStudent()">Select This Student</button>
 			<a href="" ng-click="toggleAddStudentTrue(hideWelcome(callback))"> Don't see your whole brood? Click here to add a student.</a>
 			<br><br>
-			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">BACK</a>
+			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="hideWelcome(toggleUpdateTrue)">BACK</a>
 			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="hideWelcome(toggleEnrollTrue)">NEXT</a>
 		</div>
 	</div>
@@ -218,7 +218,7 @@
 				</form>
 				<br>
 			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="toggleAddStudentFalse()">BACK</a>
-				<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="addStudent()">NEXT</a>
+			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="addStudent()">NEXT</a>
 			</div>
 		</div>
 		<div id="enrollForm" ng-controller="formCtrl" ng-show="showEnrollForm()">
@@ -291,8 +291,8 @@
 						    <input type="text" class="form-control" placeholder="Telephone (include area code)" ng-model="guardianWorkPhone">
 						  </div>
 					</div>	
-							<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">BACK</a>
-							<button type="submit" ng-click="openPDF()">Submit</button><br>
+							<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="toggleEnrollFalse(toggleWelcomeTrue)">BACK</a>
+							<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="openPDF()">PREVIEW FORM</a>
 			</div>
 
 			</form>
