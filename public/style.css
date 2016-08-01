@@ -113,6 +113,10 @@ input {
 	color:steelblue;
 }
 
+.darkblue {
+	color:midnightblue;
+}
+
 .green {
 	color:green;
 }
@@ -173,9 +177,12 @@ span {
 }
 
 .g-signin2 {
-    display: block;
-    margin: 0 auto;
-    width: 50%;
+    margin: 0;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 }
 
 .yellow {
@@ -183,7 +190,7 @@ span {
 }
 
 #login {
-	background-color: rgba(70, 130, 180, 0.6) !important; 
+	background-color: rgba(70, 130, 180, 0.8) !important; 
 	margin-top: 30px;
 	padding:20px;
 	color:white;
