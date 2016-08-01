@@ -197,10 +197,10 @@ app.controller('loginCtrl', function($scope,$rootScope, $http, sendData,controlD
             controlDisplay.showUpdate=true;
             controlDisplay.showLogin=false;
             document.getElementById("background").style.backgroundImage ="none";
+
         }, 
         function errorCallback(data){
             console.log("Not in the system");
-            console.log(data);
         }); 
     };
 
@@ -248,6 +248,8 @@ app.controller('loginCtrl', function($scope,$rootScope, $http, sendData,controlD
 });
 
 app.controller('registerCtrl', function($scope, $http, sendData,controlDisplay){  
+    $scope.kids=[];
+    $scope.kidID=[];
     $scope.toggleWelcomeTrue= function (){
         return controlDisplay.toggleWelcomeTrue();
     }
@@ -257,6 +259,20 @@ app.controller('registerCtrl', function($scope, $http, sendData,controlDisplay){
     }
 
     $scope.hideUpdate=function(callback){
+            $http({
+                method:'GET',
+                url:'/student',
+                params:{guardian_id:controlDisplay.guardianID}
+        }) 
+        .then(function successCallback(data){
+            for (var i=0; i<data.data.rows.length;i++) {
+                $scope.kids.push(data.data.rows[i].student_first);
+                $scope.kidID.push(data.data.rows[i].student_id);
+            }      
+            }, 
+            function errorCallback(data){console.log("Didn't work.")
+        });
+
         callback();
         return controlDisplay.showUpdate=false;
     }

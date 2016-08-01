@@ -24,22 +24,21 @@
  	<script src='build/vfs_fonts.js'></script>
 </head>
 <body ng-app="myApp" id="background">
-<div class="container-fluid">
-	<div id="intro">
+	<div id="intro" class="col-xs-12 col-lg-12">
 		<h1><img id="logo" src="logo.png" alt="clipboard" align="middle"/><span id="simpletitle">Simple</span><span id="enrolltitle">Enroll</span></h1>
 
 	</div>
+<div class="container-fluid">
+
 	<div ng-controller="loginCtrl">
-		<div id="login" ng-show="showLogin()">
-			<div class="row">
-				<div class="col-xs-12 col-lg-6" id="login1">
-					<h2>SimpleEnroll explanation</h2>
-				</div>
-				<div class="col-xs-12 col-lg-3" id="login2">
-				<h2>Login With Your Gmail Account</h2>
-					<div class="g-signin2" data-onsuccess="onSignIn"></div>
-				<p>No Gmail Account?<a href="https://accounts.google.com/SignUp?service=mail&hl=en_us&continue=http%3A%2F%2Fmail.google.com%2Fmail%2F%3Fpc%3Den-ha-na-us-bk&utm_campaign=en&utm_source=en-ha-na-us-bk&utm_medium=ha">Create one here.</a></p>
-				</div>
+		<div id="login" class="row col-xs-12 col-lg-12" ng-show="showLogin()">
+			<div class="row col-xs-12 col-lg-12">
+			<br>
+			<br>
+				<h2 id="login1">Simplify Enrollment.</h2>
+				<h2>With SimpleEnroll, you can eliminate repetitive paper form completion and unnecessary data entry. <br><br>Let's Get Started.</h2>
+				<div class="g-signin2" data-onsuccess="onSignIn"></div>
+				<h4>No Gmail Account?<a class="yellow" href="https://accounts.google.com/SignUp?service=mail&hl=en_us&continue=http%3A%2F%2Fmail.google.com%2Fmail%2F%3Fpc%3Den-ha-na-us-bk&utm_campaign=en&utm_source=en-ha-na-us-bk&utm_medium=ha">Create one here.</a></h4>
 			</div>
 		</div>
 
@@ -347,13 +346,13 @@
 			<form>
 				<h2>Student Information</h2>
 					<div class="row">
-						<div class="col-xs-1">
+						<div class="col-xs-2">
 							<input type="text" class="form-control" placeholder="First" ng-model="studentFirst">
 						</div>
-						<div class="col-xs-1">
+						<div class="col-xs-2">
 							<input type="text" class="form-control" placeholder="Middle" ng-model="studentMid">
 						</div>
-						<div class="col-xs-1">
+						<div class="col-xs-2">
 							<input type="text" class="form-control" placeholder="Last" ng-model="studentLast">
 						</div>
 					</div>

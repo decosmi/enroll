@@ -47,7 +47,6 @@ a {
 }
 
 body {
-/*	background-image:url("crayons.jpg");*/
 	background-color:white;
 	background-size: cover;
 	font-family: 'Maven Pro', sans-serif;
@@ -156,14 +155,6 @@ span {
 	color:tomato;
 }
 
-#login {
-/*	background-color:steelblue;*/
-	margin-top: 30px;
-	padding:10px;
-	border:solid;
-	border-color: yellow;
-	border-width:2px;
-}
 
 #google {
 	border-left:ridge;
@@ -176,8 +167,28 @@ span {
 
 #login1{
 	font-family: 'Antic Slab', serif;
-	border-right:solid;
-	border-width:2px;
-	border-color:yellow;
-	color:yellow;
+	color:white;
+	font-size:50px;
+	font-kerning: 2px;
+}
+
+.g-signin2 {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.yellow {
+  	color:yellow;
+}
+
+#login {
+	background-color: rgba(70, 130, 180, 0.6) !important; 
+	margin-top: 30px;
+	padding:20px;
+	color:white;
+	border:groove;
+	border-color: white;
+	border-width:1px;
+	text-align:center;
 }
