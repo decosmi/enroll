@@ -157,11 +157,11 @@ span {
 }
 
 #login {
-	background-color:steelblue;
+/*	background-color:steelblue;*/
 	margin-top: 30px;
 	padding:10px;
 	border:solid;
-	border-color: white;
+	border-color: yellow;
 	border-width:2px;
 }
 
@@ -171,3 +171,13 @@ span {
 	border-width:2px;
 }
 
+#login2 {
+}
+
+#login1{
+	font-family: 'Antic Slab', serif;
+	border-right:solid;
+	border-width:2px;
+	border-color:yellow;
+	color:yellow;
+}

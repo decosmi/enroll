@@ -31,9 +31,16 @@
 	</div>
 	<div ng-controller="loginCtrl">
 		<div id="login" ng-show="showLogin()">
-			<h2>Login With Your Gmail Account</h2>
-			<div class="g-signin2" data-onsuccess="onSignIn"></div>
-			<p>No Gmail Account?<a href="https://accounts.google.com/SignUp?service=mail&hl=en_us&continue=http%3A%2F%2Fmail.google.com%2Fmail%2F%3Fpc%3Den-ha-na-us-bk&utm_campaign=en&utm_source=en-ha-na-us-bk&utm_medium=ha">Create one here.</a></p>
+			<div class="row">
+				<div class="col-xs-12 col-lg-6" id="login1">
+					<h2>SimpleEnroll explanation</h2>
+				</div>
+				<div class="col-xs-12 col-lg-3" id="login2">
+				<h2>Login With Your Gmail Account</h2>
+					<div class="g-signin2" data-onsuccess="onSignIn"></div>
+				<p>No Gmail Account?<a href="https://accounts.google.com/SignUp?service=mail&hl=en_us&continue=http%3A%2F%2Fmail.google.com%2Fmail%2F%3Fpc%3Den-ha-na-us-bk&utm_campaign=en&utm_source=en-ha-na-us-bk&utm_medium=ha">Create one here.</a></p>
+				</div>
+			</div>
 		</div>
 
 			<section id="loginSuccess" ng-show="showWelcome()">
