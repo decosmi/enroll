@@ -1,14 +1,18 @@
+/*.container-fluid {
+	background-color: gray;
+}
+*/
 .next {
 	font-family: 'Josefin Slab', serif;
 	font-size: 20px;
 	font-weight:bold;
-	border-color: white;
-	border-style: dotted;
-	border-width: 3px;
+	border-color: gray;
+	border-style: solid;
+	border-width: 1px;
 }
 
 #update {
-	background-color: green;
+/*	background-color: green;*/
 	padding:10px;
 }
 
@@ -17,29 +21,24 @@
 }
 
 #allStudent{
-	background-color:mediumseagreen;
+/*	background-color:mediumseagreen;*/
 }
 
 #loginSuccess{
-	background-color: steelblue;
 }
 
 #forms{
 	background-color:mediumseagreen;
 }
 
-#enrollForm {
-	background-color:steelblue;
-}
-
-
 
 .glyphicon {
 	font-size:30px;
+	color: tomato;
 }
 
 a {
-	color:white;
+	color:tomato;
 	margin:10px;
 }
 
@@ -64,7 +63,8 @@ a {
 }
 
 body {
-	background-image: url("crayons.jpg");
+/*	background-image: url("crayons.jpg");*/
+	background-color:white;
 	background-size: cover;
 	font-family: 'Maven Pro', sans-serif;
 
@@ -77,9 +77,9 @@ body {
 }
 
 h1 {
-	font-family: 'Josefin Slab', serif;
+	font-family: 'Antic Slab', serif;
 	font-weight: bold;
-	color:white;
+	color:gray;
 }
 
 
@@ -87,6 +87,87 @@ input {
 	margin:10px;
 }
 
-placeholder {
+.container-fluid {
+	max-width: 1400px;
+	padding:30px; 
+}
 
+/*.main-section {
+	background-color:white;
+}*/
+
+.img-profile {
+    max-width: 30%;
+    height: auto;
+    margin-:20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.guidebox-blue {
+	background-color:steelblue;
+}
+
+.guidebox-green {
+	background-color:green;
+}
+
+.guidebox-gray {
+	background-color:gray;
+}
+.disappear {
+	opacity:0;
+}
+
+.guidebox-label {
+	text-align: center;
+	color:white;
+}
+
+.orange {
+	color:tomato;
+}
+
+.blue {
+	color:steelblue;
+}
+
+.green {
+	color:green;
+}
+
+.gray {
+	color:gray;
+}
+
+.section-profile {
+	border-bottom: solid;
+	border-width: 2px;
+	border-color:steelblue;
+}
+
+.section-student {
+	border-bottom: solid;
+	border-width: 2px;
+	border-color:green;
+}
+
+
+.section-form {
+	border-bottom: solid;
+	border-width: 2px;
+	border-color:gray;
+}
+
+label {
+	font-size: 20px;
+}
+
+span {
+	margin:2px;
+}
+
+.additional {
+	color:tomato;
 }

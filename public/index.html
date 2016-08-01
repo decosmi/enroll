@@ -19,6 +19,7 @@
     <link href="style.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Antic+Slab' rel='stylesheet' type='text/css'>
     <script src='build/pdfmake.min.js'></script>
  	<script src='build/vfs_fonts.js'></script>
 </head>
@@ -26,6 +27,7 @@
 <div class="container-fluid">
 	<div id="intro">
 		<h1><img id="logo" src="logo.png" alt="clipboard" align="middle"/><span id="simpletitle">Simple</span><span id="enrolltitle">Enroll</span></h1>
+
 	</div>
 	<div ng-controller="loginCtrl">
 		<div id="login" ng-show="showLogin()">
@@ -33,20 +35,67 @@
 			<div class="g-signin2" data-onsuccess="onSignIn"></div>
 			<p>No Gmail Account?<a href="https://accounts.google.com/SignUp?service=mail&hl=en_us&continue=http%3A%2F%2Fmail.google.com%2Fmail%2F%3Fpc%3Den-ha-na-us-bk&utm_campaign=en&utm_source=en-ha-na-us-bk&utm_medium=ha">Create one here.</a></p>
 		</div>
-		<div id="loginSuccess" ng-show="showWelcome()">
-			<h1>To proceed, select a student.</h1>
-			<button ng-click="findKids()">Show My Kids!</button>
-			<select ng-model="selectedStudent" ng-options="x for x in kids"></select>
-			<button ng-click="chooseStudent()">Select This Student</button>
-			<a href="" ng-click="toggleAddStudentTrue(hideWelcome(callback))"> Don't see your whole brood? Click here to add a student.</a>
-			<br><br>
-			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="hideWelcome(toggleUpdateTrue)">BACK</a>
-			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="hideWelcome(toggleEnrollTrue)">NEXT</a>
-		</div>
+
+			<section id="loginSuccess" ng-show="showWelcome()">
+				<section class="section">
+				    <div class="row">
+				        <div class="col-xs-12 col-lg-4" >
+				            <div class="guidebox-blue">
+				            <h2 class="disappear">take up space</h2>
+				                <img src="profile.png" class="img-profile">
+				                <h2 class="guidebox-label">Your Profile Data</h2>
+				            </div>
+				        </div>
+				        <div class="col-xs-12 col-lg-8">
+				            <div>
+				                <div>
+				                    <div>
+										<h1 class="blue"> Please select a student. </h1>
+				                    </div>
+				                </div>
+				                <h3>Below, please select a student from the dropdown list. We'll retrieve your student's saved data and move on to completing forms. You also have the option to add more students to your profile. </h3>
+				            </div>
+				        </div>
+				    </div>
+				</section>
+				<div>
+				</div>
+				<h1></h1>
+				<button ng-click="findKids()">Show My Kids!</button>
+				<select ng-model="selectedStudent" ng-options="x for x in kids"></select>
+				<button ng-click="chooseStudent()">Select This Student</button>
+				<a href="" ng-click="toggleAddStudentTrue(hideWelcome(callback))"> Don't see your whole brood? Click here to add a student.</a>
+				<br><br>
+				<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="hideWelcome(toggleUpdateTrue)">BACK</a>
+				<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="hideWelcome(toggleEnrollTrue)">NEXT</a>
+			</section>
+
+
 	</div>
 
 	<div ng-controller="registerCtrl" id="update" ng-show="showUpdate()">
-		<h1>Welcome! Update Your Personal Information</h1>
+			<section class="section-profile">
+		    <div class="row">
+		        <div class="col-xs-12 col-lg-4" >
+		            <div class="guidebox-blue">
+		            <h2 class="disappear">take up space</h2>
+		                <img src="profile.png" class="img-profile">
+		                <h2 class="guidebox-label">Your Profile</h2>
+		            </div>
+		        </div>
+		        <div class="col-xs-12 col-lg-8">
+		            <div>
+		                <div>
+		                    <div>
+								<h1 class="blue"> Please update your personal information. </h1>
+		                    </div>
+		                </div>
+		                <h3>Please enter your most current information below. Keeping this information accurate makes completing forms almost effortless!</h3>
+		            </div>
+		        </div>
+		    </div>
+		</section>
+
 		<form>
 		<h2>Contact Information</h2>
 			<div class="row">
@@ -106,115 +155,159 @@
 				    <input type="text" class="form-control" placeholder="State" ng-model="guardianWorkState">
 				  </div>
 			</div>
-   		<button class= "btn-lg" type="submit" ng-click="register()">Save</button>
-		<a class="btn btn-outline-primary btn-lg next"  href="#" role="button">BACK</a>
+<!--    		<button class= "btn-lg" type="submit" ng-click="register()">Save</button> -->
+		<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="register()">Save Updates</a>
 		<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="hideUpdate(toggleWelcomeTrue)">NEXT</a>
 	  </form>
 	</div>
 
 		<div ng-controller="studentCtrl" id="allStudent" ng-show="showAddStudent()">
-			<div id="addKid">
-			<h1>Add A Student</h1>
+				<section class="section-student">
+				    <div class="row">
+				        <div class="col-xs-12 col-lg-4" >
+				            <div class="guidebox-green">
+				            <h2 class="disappear">take up space</h2>
+				                <img src="bookbag.png" class="img-profile">
+				                <h2 class="guidebox-label">Student Information</h2>
+				            </div>
+				        </div>
+				        <div class="col-xs-12 col-lg-8">
+				            <div>
+				                <div>
+				                    <div>
+										<h1 class="green"> Add a Student. </h1>
+				                    </div>
+				                </div>
+				                <h3>Please add your student's basic information below. Here, you can add a student to your profile. You will add more information about your student later. </h3>
+				            </div>
+				        </div>
+				    </div>
+				</section>
 				<form>
-				<h4>Please enter your student's name.</h4>
-				First:
-			    <input type="text" ng-model="studentFirst">
-			   	Middle:
-			    <input type="text" ng-model="studentMiddle">
-			    Last:
-			    <input type="text" ng-model="studentLast"><br>
-				<h4>Please select a gender.</h4> 
-			    <label for="male">Male</label>
-				  <input type="radio" ng-model="gender" value="male" >
-				<label for="female">Female</label>
-				  <input type="radio" ng-model="gender" value="female">
-				<label for="other">Other</label>
-	  				<input type="radio" ng-model="gender" value="other">
-			    <h4>Please enter student's birthdate.</h4>
-				<select name="DOBMonth" ng-model="selectedMonth">
-					<option> - Month - </option>
-					<option value="January">January</option>
-					<option value="Febuary">Febuary</option>
-					<option value="March">March</option>
-					<option value="April">April</option>
-					<option value="May">May</option>
-					<option value="June">June</option>
-					<option value="July">July</option>
-					<option value="August">August</option>
-					<option value="September">September</option>
-					<option value="October">October</option>
-					<option value="November">November</option>
-					<option value="December">December</option>
-				</select>
+				<h2>Full Name</h2>
+					<div class="row">
+						<div class="col-xs-4">
+							<input type="text" class="form-control" placeholder="First" ng-model="studentFirst">
+						</div>
+						<div class="col-xs-4">
+							<input type="text" class="form-control" placeholder="Middle" ng-model="studentMiddle">
+						</div>	
+						<div class="col-xs-4">
+							<input type="text" class="form-control" placeholder="Last" ng-model="studentLast">
+						</div>		
+					</div>
+				<h2>Gender</h2> 
+					<div class="row">
+						<div class="col-xs-2">
+				    		<label for="male">Male</label>
+					  		<input type="radio" ng-model="gender" value="male" >
+						</div>
+						<div class="col-xs-2">
+							<label for="female">Female</label>
+					  		<input type="radio" ng-model="gender" value="female">
+						</div>
+						<div class="col-xs-2">
+							<label for="other">Other</label>
+			  				<input type="radio" ng-model="gender" value="other">
+						</div>
+					</div>					
+			    <h2> Birthdate</h2>
+			    <div class="row">
+			    	<div class="col-xs-2">
+						<select name="DOBMonth" class="form-control" ng-model="selectedMonth">
+							<option> - Month - </option>
+							<option value="January">January</option>
+							<option value="Febuary">Febuary</option>
+							<option value="March">March</option>
+							<option value="April">April</option>
+							<option value="May">May</option>
+							<option value="June">June</option>
+							<option value="July">July</option>
+							<option value="August">August</option>
+							<option value="September">September</option>
+							<option value="October">October</option>
+							<option value="November">November</option>
+							<option value="December">December</option>
+						</select>
+					</div>
+					<div class="col-xs-2">
+						<select name="DOBDay" class="form-control" ng-model="selectedDay">
+							<option> - Day - </option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+							<option value="21">21</option>
+							<option value="22">22</option>
+							<option value="23">23</option>
+							<option value="24">24</option>
+							<option value="25">25</option>
+							<option value="26">26</option>
+							<option value="27">27</option>
+							<option value="28">28</option>
+							<option value="29">29</option>
+							<option value="30">30</option>
+							<option value="31">31</option>
+						</select>
+					</div>
 
-				<select name="DOBDay" ng-model="selectedDay">
-					<option> - Day - </option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-					<option value="6">6</option>
-					<option value="7">7</option>
-					<option value="8">8</option>
-					<option value="9">9</option>
-					<option value="10">10</option>
-					<option value="11">11</option>
-					<option value="12">12</option>
-					<option value="13">13</option>
-					<option value="14">14</option>
-					<option value="15">15</option>
-					<option value="16">16</option>
-					<option value="17">17</option>
-					<option value="18">18</option>
-					<option value="19">19</option>
-					<option value="20">20</option>
-					<option value="21">21</option>
-					<option value="22">22</option>
-					<option value="23">23</option>
-					<option value="24">24</option>
-					<option value="25">25</option>
-					<option value="26">26</option>
-					<option value="27">27</option>
-					<option value="28">28</option>
-					<option value="29">29</option>
-					<option value="30">30</option>
-					<option value="31">31</option>
-				</select>
+					<div class="col-xs-2">
+						<select name="DOBYear" class="form-control" ng-model="selectedYear">
+							<option> - Year - </option>
+							<option value="2016">2016</option>
+							<option value="2015">2015</option>
+							<option value="2014">2014</option>
+							<option value="2013">2013</option>
+							<option value="2012">2012</option>
+							<option value="2011">2011</option>
+							<option value="2010">2010</option>
+							<option value="2009">2009</option>
+							<option value="2008">2008</option>
+							<option value="2007">2007</option>
+							<option value="2006">2006</option>
+							<option value="2005">2005</option>
+							<option value="2004">2004</option>
+							<option value="2003">2003</option>
+							<option value="2002">2002</option>
+							<option value="2001">2001</option>
+							<option value="2000">2000</option>	
+						</select>
+					</div>
+				</div>
+		    	<h2>Additional Required Information</h2>
+			    <div class="row">
+			    	<div class="col-xs-3">
+			    		<input type="password" class="form-control" ng-model="ssn" placeholder="Social Security Number">
+			    	</div>
+			    	<div class="col-xs-3">
+			    		<input type="text" class="form-control" ng-model="race" placeholder="Race">
+			    	</div>
+			    	<div class="col-xs-3">
+						<select name="relationship" class="form-control" ng-model="rel">
+							<option value="" disabled selected>Select Your Relationship To Student</option>
+							<option value="mother">mother</option>
+							<option value="father">father</option>
+							<option value="legal guardian">legal guardian</option>						
+						</select>
+			    	</div>
+			   	</div>
 
-				<select name="DOBYear" ng-model="selectedYear">
-					<option> - Year - </option>
-					<option value="2016">2016</option>
-					<option value="2015">2015</option>
-					<option value="2014">2014</option>
-					<option value="2013">2013</option>
-					<option value="2012">2012</option>
-					<option value="2011">2011</option>
-					<option value="2010">2010</option>
-					<option value="2009">2009</option>
-					<option value="2008">2008</option>
-					<option value="2007">2007</option>
-					<option value="2006">2006</option>
-					<option value="2005">2005</option>
-					<option value="2004">2004</option>
-					<option value="2003">2003</option>
-					<option value="2002">2002</option>
-					<option value="2001">2001</option>
-					<option value="2000">2000</option>	
-				</select><br>
-			    <h4>Please enter student's social security number.</h4> (No Hyphens. Format= ##########)<br>
-			    <input type="password" ng-model="ssn">
-		    	<br><br>
-		    	<h4>Please enter your student's race/ethnicity.</h4>
-		    	<input type="text" ng-model="race"><br><br>
-		    	<h4>Please select your relationship to the student.</h4>
-				<select name="relationship" ng-model="rel">
-					<option> - Relationship to Student - </option>
-					<option value="mother">mother</option>
-					<option value="father">father</option>
-					<option value="legal guardian">legal guardian</option>
-				
-				</select><br><br>
 				</form>
 				<br>
 			<a class="btn btn-outline-primary btn-lg next"  href="#" role="button" ng-click="toggleAddStudentFalse()">BACK</a>
@@ -222,12 +315,31 @@
 			</div>
 		</div>
 		<div id="enrollForm" ng-controller="formCtrl" ng-show="showEnrollForm()">
-			<h1>Enrollment Form</h1>
-			<a href="" ng-click="displayUserData()"> Please retrieve my saved information.</a>
+				<section class="section-form">
+				    <div class="row">
+				        <div class="col-xs-12 col-lg-4" >
+				            <div class="guidebox-gray">
+				            <h2 class="disappear">take up space</h2>
+				                <img src="forms.png" class="img-profile">
+				                <h2 class="guidebox-label">Forms</h2>
+				            </div>
+				        </div>
+				        <div class="col-xs-12 col-lg-8">
+				            <div>
+				                <div>
+				                    <div>
+										<h1 class="gray"> Form 1: Enrollment Form </h1>
+				                    </div>
+				                </div>
+				                <h3>Below, please select a student from the dropdown list. We'll retrieve your student's saved data and move on to completing forms. You also have the option to add more students to your profile. <br><span class="glyphicon glyphicon-alert" aria-hidden="true"></span ><h4 class="additional">ADDITIONAL REQUIRED DATA:</h4><br> None</h3>
+				            </div>
+				        </div>
+				    </div>
+				</section>
+			<a href="" ng-click="displayUserData()"> <h3>Click here to retrieve your saved information.</h3></a>
 			<form>
-				<h3>Student Information</h3>
+				<h2>Student Information</h2>
 					<div class="row">
-						<h4>Student Name</h4>
 						<div class="col-xs-1">
 							<input type="text" class="form-control" placeholder="First" ng-model="studentFirst">
 						</div>
@@ -239,7 +351,6 @@
 						</div>
 					</div>
 					<div class="row">
-						<h4>Contact Information</h4>
 						  <div class="col-xs-4">
 						    <input type="text" class="form-control" placeholder="Address" ng-model="guardianHomeAddress">
 						  </div>
@@ -253,8 +364,7 @@
 						    <input type="text" class="form-control" placeholder="Telephone (include area code)" value="">
 						  </div>				  
 					</div>
-				<h3>Parent/Guardian Information</h3>
-				<h4>Name and Relationship</h4>
+				<h2>Parent/Guardian Information</h2>
 				<div class="row">
 					<div class="col-xs-2">
 						<input type="text" class="form-control" placeholder="Relationship to Student" ng-model="guardianRel">
@@ -268,7 +378,6 @@
 					</div>
 				</div>
 					<div class="row">
-						<h4>Contact Information</h4>
 						  <div class="col-xs-4">
 						    <input type="text" class="form-control" placeholder="Address" ng-model="guardianHomeAddress">
 						  </div>
@@ -283,7 +392,6 @@
 						  </div>				  
 					</div>
 					<div class="row">
-						<h4>Employment Information</h4>
 						<div class="col-xs-4">
 							<input type="text" class="form-control" placeholder="Place of Employment" ng-model="guardianWorkName">
 						</div>	
@@ -298,9 +406,10 @@
 			</form>
 
 		</div>
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	<script src="app.js"></script>
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="app.js"></script>
 	</div>
+</div>
 </body>
 </html>
