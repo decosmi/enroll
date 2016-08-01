@@ -179,7 +179,7 @@ span {
 .g-signin2 {
     margin: 0;
     position: absolute;
-    top: 70%;
+    top: 80%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
@@ -191,8 +191,8 @@ span {
 
 #login {
 	background-color: rgba(70, 130, 180, 0.8) !important; 
-	margin-top: 30px;
-	padding:20px;
+	margin-top: 50px;
+	padding:30px;
 	color:white;
 	border:groove;
 	border-color: white;
