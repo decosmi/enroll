@@ -196,6 +196,7 @@ app.controller('loginCtrl', function($scope,$rootScope, $http, sendData,controlD
             sendData.guardianWorkPhone=data.data.rows[0].work_phone;
             controlDisplay.showUpdate=true;
             controlDisplay.showLogin=false;
+            document.getElementById("background").style.backgroundImage ="none";
         }, 
         function errorCallback(data){
             console.log("Not in the system");

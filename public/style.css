@@ -1,7 +1,6 @@
-/*.container-fluid {
-	background-color: gray;
+#background {
+	background-image:url("crayons.jpg");
 }
-*/
 .next {
 	font-family: 'Josefin Slab', serif;
 	font-size: 20px;
@@ -12,23 +11,8 @@
 }
 
 #update {
-/*	background-color: green;*/
+
 	padding:10px;
-}
-
-#login {
-	background-color:tomato;
-}
-
-#allStudent{
-/*	background-color:mediumseagreen;*/
-}
-
-#loginSuccess{
-}
-
-#forms{
-	background-color:mediumseagreen;
 }
 
 
@@ -63,7 +47,7 @@ a {
 }
 
 body {
-/*	background-image: url("crayons.jpg");*/
+/*	background-image:url("crayons.jpg");*/
 	background-color:white;
 	background-size: cover;
 	font-family: 'Maven Pro', sans-serif;
@@ -92,9 +76,6 @@ input {
 	padding:30px; 
 }
 
-/*.main-section {
-	background-color:white;
-}*/
 
 .img-profile {
     max-width: 30%;
@@ -141,6 +122,9 @@ input {
 	color:gray;
 }
 
+.white {
+	color:white;
+}
 .section-profile {
 	border-bottom: solid;
 	border-width: 2px;
@@ -171,3 +155,19 @@ span {
 .additional {
 	color:tomato;
 }
+
+#login {
+	background-color:steelblue;
+	margin-top: 30px;
+	padding:10px;
+	border:solid;
+	border-color: white;
+	border-width:2px;
+}
+
+#google {
+	border-left:ridge;
+	border-color:white;
+	border-width:2px;
+}
+
